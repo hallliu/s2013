@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[cm]{fullpage}
+\newcommand{\nc}{\newcommand}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\nc{\cn}{\mathbb{C}}
+\nc{\rn}{\mathbb{R}}
+\nc{\qn}{\mathbb{Q}}
+\nc{\aff}{\mathbb{A}}
+\nc{\pd}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\nc{\ep}{\epsilon}
+\nc{\topo}{\mathscr{T}}
+\nc{\basis}{\mathscr{B}}
+\nc{\nullset}{\varnothing}
+\setlength{\parindent}{0mm}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+\subsection*{1.2.1}
+We need to show that $V(\{F_i\}_{i\in I})\cup V(\{F_j\}_{j\in J})=V(\{F_iF_j\}_{(i,j)\in I\times J})$. The forward inclusion follows because if $F_i(x)=0$ for all $i$, then $F_i(x)F_j(x)=0$ for all pairs $(i,j)$. The reverse inclusion: for any $x$ such that $F_i(x)F_j(x)=0$ for all pairs $(i,j)$, assume $x\not\in V(\{F_i\}_{i\in I})$, and fix $i$ such that $F_i(x)\neq0$. Then for all $j$, $F_j(x)=0$ because otherwise we would have $F_i(x)F_j(x)\neq0$ for some $j$, which implies that $x\inV(\{F_j\}_{j\in J})$.
+\subsection*{1.2.2}
+In $\aff^2$, the diagonal is closed because it's the zero set of $y-x$. However, if $\aff^2=\aff\times\aff$, then this would imply that $\aff$ is Hausdorff, which is not true because $\aff$ has the cofinite topology.
+\subsection*{1.2.3}
+Fiddling with the two equations for the variety gives that a point $(x,y,z)$ is on the variety iff $y=x^2$ and $z=x^3$. Substituting these in gives that all points on the variety are of the form $(x,x^2,x^3)$, and any point of the form $(x,x^2,x^3)$ is in the variety.
+\subsection*{2.1.1}
+Let $M$ be maximal, $a,b\in R$ such that $ab\in M$. Look at the images of $a$ and $b$ in $R/M$. Since this is a field, we have $\bar{a}\cdot\bar{b}=0$ in the field, which implies that one of $\bar{a}$ or $\bar{b}$ is $0$, which implies one of $a,b$ is in $M$.
+
+Let $I$ be prime. If $a\in\sqrt{I}$, then $a^n\in I$ for some $n$. Since $I$ is prime, one of $a^{n-1}$ or $a$ is in $I$. If $a\not\in I$, we get that $a^{n-1}\in I$, and proceed inductively to get a contradiction.
+
+Fix some ideal $I$ and consider its radical. Let $a,b\in\sqrt{I}$, with $a^n\in I$ and $b^m\in I$. Then if we let $k=2\max(n,m)$, we have $(a+b)^k\in I$, since in the expansion each term will have either $a$ or $b$ to at least the $k/2$th power, which means that each term is in $I$. Further, if we take any element $r\in R$, we have $(ra)^n=r^na^n\in I$, so $ra\in\sqrt{I}$, which makes $\sqrt{I}$ an ideal.
+\subsection*{2.1.4}
+Suppose $R$ is reduced. Then for each $a\in\sqrt{0}$, $a^n=0$ for some $n$ which implies $a=0$, so $0$ is radical. Conversely, if $0$ is radical, then if we have some nilpotent $a$, we get that $a\in\sqrt{0}$ which means that $a=0$.
+\subsection*{2.1.5}
+Suppose $R/I$ is reduced. Then the zero ideal in the quotient is radical, so since the zero ideal corresponds to $I$ under the lattice bijection, $I$ is also radical. The same argument works in reverse since all the implications still hold when reversed.
+\subsection*{2.2.1}
+Suppose $R$ is Noetherian and consider an infinite ascending chain of ideals. Take the union of all of them. This is still an ideal because for any two elements, there's some ideal in the chain that contains both of them, so the closure properties still hold. It's finitely generated because $R$ is Noetherian, so since each of its generators $r_i$ is contained in $I_{n_i}$ for some $n$, the union is actually equal to $I_N$ where $N=\max(n_1,\ldots,n_k)$. Thus, the ascending sequence must stop being strictly ascending at some point.
+
+Conversely, suppose that every strictly ascending chain of ideals terminates at some point. Let $I$ be an ideal, and pick some $a_0\in I$, $a_1\in I-(a_0)$, $a_2\in I-(a_0,a_1)$, etc. The strictly ascending sequence $(a_0),(a_0,a_1),\ldots$ must terminate at $n$, and this implies that we cannot choose any $a_n\in I-(a_0,\ldots,a_{n-1})$, which implies that $I=(a_0,\ldots,a_{n-1})$, so $I$ is finitely generated.
+\subsection*{3}
+(1) crosses the $X$ axis at one point. (2) crosses it at three. (3) crosses it at two, but one of them has multiplicity $2$, and (4) crosses it once with multiplicity $3$. These correspond to the ways in which a third-degree polynomial in one variable can have real roots via the equation $y^2=g(x)$.
+\subsection*{4}
+Single points are algebraic sets, so consider the collection of rational points in $\rn$. Any polynomial which is zero on a dense set is the zero polynomial, so this cannot be algebraic.
+\subsection*{5}
+Consider the leading coefficients of elements of $I$. Since we have $x((2x+6)-(2x+3))-((2x+3)-(4x+3))=x\in I$, the set of leading coefficients is simply $\zn$. Following the proof of Hilbert's basis theorem, we choose $x$ as one of the generators. Then, if we look at all polynomials in $I$ of degree $0$, we see that they're the integers divisible by $3$, so that ideal is $(3)$, and we can pick $3$ as our second generator. The ideal generated by $x$ and $3$ is the same as that generated by $2x$ and $3$, since $2x\in(x,3)$ and $x=3x-2x\in(2x,3)$.
+\subsection*{6}
+Since we have nonzero polynomials and $\cn$ is a field, the ideal of leading coefficients must be $\cn$. We choose $x+1$ as our first generator. We now show that there are no constant polynomials in $I$, which implies that $I=(x+1)$. Suppose there were. Then, we'd have $I=\cn$, so we can write $1=\sum a_ig_i$ where $g_i=n_i+x^{n_i}$. Since all the $n_i$ are distinct, the only way the coefficient of $x^{n_i}$ can be $0$ is if $a_i=0$. 
+\end{document}
