@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[cm]{fullpage}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\newcommand{\ep}{\epsilon}
+\newcommand{\openm}{\begin{pmatrix}}
+\newcommand{\closem}{\end{pmatrix}}
+\DeclareMathOperator{\cov}{cov}
+\newcommand{\nc}{\newcommand}
+\newcommand{\rn}{\mathbb{R}}
+\nc{\Pt}[1]{P(\text{#1})}
+\nc{\nn}{\mathbb{N}}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+\section*{Book Problems}
+\subsection*{1.15}
+There are $\binom{12}{5}=792$ ways to choose the 5 men and $\binom{10}{5}=252$ ways to choose the $5$ women, for a total of $199584$ ways to choose the 10 people. On top of that, there are $5!=120$ ways to choose the pairings (man 1 can be paired to any of the 5, man 2 can be paired to any of the remaining 4, etc.), so the total number of possibilities is $23950080$.
+\subsection*{1.20t}
+This is equivalent to calculating the number of ways to distribute $n-\sum m_i$ balls among $r$ urns. Given an instance of this, we can transform it into an instance of the original problem by adding $m_i$ balls to urn $i$, and givan an instance of the original problem, we can transform it into an instance of this by taking away $m_i$ balls from the $i$th urn. 
+
+In turn, this is the same as finding the number of nonzero solutions to $u_1+u_2+\cdots+u_r=k=n-\sum m_i$, where each of the $u_i$ are nonnegative. This is $\binom{k-r-1}{r-1}$, so the number we're looking for is $\binom{n-\sum m_i-r-1}{r-1}$.
+\subsection*{2.28}
+Without replacement: 
+
+a. There are $\binom{19}{3}$ ways to choose the set of $3$ balls. If they are to be all of the same color, they can either all be red, in which case there are $\binom{5}{3}$ ways to pick them; blue, $\binom{6}{3}$ ways; or green, $\binom{8}{3}$ ways. Since the colors are mutually exclusive, there are $\binom{5}{3}+\binom{6}{3}+\binom{8}{3}$ ways to pick three of the same color, for a probability of $\frac{86}{969}$.
+
+b. There are $5$ ways to choose the red ball, $6$ ways to choose the blue ball, and $8$ ways to choose the green ball, so there are $5\cdot6\cdot8$ ways to choose the set of $3$, for a probability of $\frac{80}{323}$.
+
+With replacement:
+
+a. Probability that all three are the same color is the sum of the probabilities $P(\text{all red})+P(\text{all blue})+P(\text{all green})$. For red, the probability of each one of them being red is $5/19$, so since the colors are independent, the probability that all three are red is $(5/19)^3$. Calculations are similar for green and blue, so the probability is $\frac{853}{6859}$.
+
+b. Consider the three balls as ordered for now. We have $\Pt{first ball red}=5/19$, $\Pt{second ball blue}=6/19$, and $\Pt{third ball green}=8/19$. Multiply them together to get $240/6859$, but since the colors can be drawn in any order, we multiply this by $6$ to get $1440/6859$.
+
+\subsection*{2.42}
+Probability of double $6$ not occurring on any given toss is $35/36$. Since dice tosses are independent, the probability that no double 6 occurrs in a string of $n$ tosses is $(35/36)^n$, so the probability that at least one double $6$ occurs in $n$ tosses is $1-(35/36)^n$. To make this at least $1/2$, we want $(35/36)^n<1/2\implies n>\log(1/2)/\log(35/36)=24.6$, so $n$ needs to be at least 25.
+\subsection*{2.45}
+a. The probability that the right key is found on the $k$th try is equal to the probability that the wrong key was tried on tries $1\ldots k-1$ and the right key was tried on try $k$. The former is $\prod_{i=0}^{k-2}\frac{n-i-1}{n-i}=\frac{n-k+1}{n}$, and the latter is $\frac{1}{n-k+1}$, so the probability is $1/n$. 
+
+b. The probability of the wrong key being tried on all tries $1\ldots k-1$ is $\left(\frac{n-1}{n}\right)^{k-1}$, and the probability of the right key tried on try $k$ is $\frac{1}{n}$, so the overall probability is $\frac{1}{n}\left(\frac{n-1}{n}\right)^{k-1}$.
+\subsection*{2.14t}
+The formula holds for two events by Prop. 4.3. Suppose that the formula holds for $n-1$ events. Let event $F$ denote $E_1\cup E_2\cup\cdots\cup E_{n-1}$. We have $P(E_1\cup E_2\cup\cdots\cup E_n)=P(F\cup E_n)=P(E_n^cF\cup E_n)=P(E_n^cF)+P(E_n)=P(F)-P(E_nF)+P(E_n)$. Expanding out $E_nF$, we get $E_nE_1\cup\cdots\cup E_nE_{n-1}$. By the inductive hypothesis, 
+$$P(E_nF)=\sum_{r=1}^{n-1}(-1)^{r+1}\sum_{i_1<i_2<\cdots<i_r<n}P(E_{i_1}E_{i_2}\cdots E_{i_r}E_n)$$
+This is the sum of the terms in 
+$$\sum_{r=1}^n(-1)^{r+1}\sum_{i_1<i_2<\cdots<i_r}P(E_{i_1}E_{i_2}\cdots E_{i_r})$$
+which contain an $E_n$ term (excluding $P(E_n)$, but that's added on anyway), and the sign on $P(E_nF)$ corrects for the additional $E_n$ term, so we have $-P(E_nF)+P(E_n)+P(F)=P(F\cup E_n)$.
+\subsection*{2.19t}
+Following the hint, we calculate the probability that there are $r-1$ red balls in the first $k-1$ withdrawals. There are $\binom{n+m}{k-1}$ ways to do the first $k$ withdrawals, and $\binom{n}{r-1}\binom{m}{k-r}$ of them have precisely $r-1$ red balls (choose the $r-1$ red balls, then choose the remaining $k-r$ blue balls). The probability that the $k$th ball is red is $\frac{n-r+1}{n+m-k+1}$, so the overall probability that $k$ balls will be drawn is 
+$$\frac{n-r+1}{n+m-k+1}\frac{\binom{n}{r-1}\binom{m}{k-r}}{\binom{n+m}{k-1}}$$
+\subsection*{2.20t}
+Suppose that all points are equally likely with probability $p$. Then by the third axiom, $P(S)=P(\bigcup_{s\in S}\{s\})=\sum_{i=1}^\infty P(\{s_i\})$, which diverges if $p>0$ and is zero if $p=0$. Either way, this contradicts the second axiom. This does not preclude all points from having positive probability: let $S=\nn$, $P(\{n\})=\frac{1}{2^n}$. Then, using the formula above gives $P(S)=1$.
+
+\section*{Additional problems}
+\subsection*{1}
+Count the number of flip-sequences that have no consecutive heads. There can be 1, 2, 3, or 4 heads in the sequence. If there is 1 head, then there are 8 places to put it. If there are 2 heads, then we think of placing the 6 tails in a row and choosing two gaps to put the heads in (this includes the ends), so there are $\binom{7}{2}$ ways to place two heads. For 3 heads, we do a similar calculation and get $\binom{6}{3}$ ways, and for 4 heads we have $\binom{5}{4}$ ways. Add them together and get 54, so the probability is $\frac{54}{2^8}$.
+\subsection*{2}
+In general, for $n$ speakers and $k$ possible dates, this is the problem of finding a bipartite matching between $2n$ nodes with each node having $k$ edges. If we let $A$ be any subset of speakers and $\Gamma(A)$ be the set of dates which any speaker in $A$ regarded as possible, then there is no perfect matching iff for some $A$ we have $|A|>|\Gamma(A)|$ (Kleinberg/Tardos, Algorithm Design, Prop. 7.39 and 7.40). 
+
+In the 3 by 2 case, this is only possible if one of the dates is not indicated by any speaker, since $|\Gamma(A)|$ is always at least 2. In general, there are 3 ways for each speaker to choose his dates, and there are 3 speakers, so there are 9 possiblities. If one of the dates is to be chosen by no speaker, then this reduces it down to 3 possibilities, so the probability of the existance of a bipartite matching is $2/3$.
+
+In the 4 by 2 case, this can happen if all speakers choose among three dates or if any three speakers choose the same two dates. There is 1 way for the first to occur. There are $(4\text{ speakers})^{3\text{ choices per speaker}}(4\text{ sets of 3 dates})=324$ ways for the first to occur, and $(4\text{ sets of 3 speakers})(6\text{ sets of 2 dates})(6\text{ choices for the remaining speaker})=144$ ways for the second to occur. The overlap is when all speakers choose among three dates and three of them pick the same two. The overlap happens iff in the second case, the remaining speaker picks one of the two dates the others picked as one of his two dates (3 choices for the remaining speaker), so we get an overlap of size $72$. Thus, there are $324+144-72=396$ ways for a bipartite matching to not exist, so the probability that one does exist is $\frac{3700}{4096}$.
+\subsection*{3}
+Use the law of total probability. We have 
+\begin{align*}
+\Pt{best candidate is accepted}&=\sum_i\Pt{best candidate is accepted and best candidate is $i$th}\\
+&=\sum_i\Pt{candidate $i$ is accepted $|$ candidate $i$ is the best}\Pt{candidate $i$ is the best}\\
+&=\frac{1}{n}\sum_i\Pt{candidate $i$ is accepted $|$ candidate $i$ is the best}
+\end{align*}
+For $i$ from $1$ to $r$, the summand is zero because we don't accept anything in $[1\ldots r]$. For $i>r$, given that candidate $i$ is the best, he is accepted iff no candidate in $[r+1\ldots i-1]$ is better than the best candidate in $[1\ldots r]$. This is equivalent to the maximum of the first $i-1$ candidates being in the first $r$ candidates, which has probability $\frac{r}{i-1}$. Summing over $i$, we get 
+$$\frac{r}{n}\sum_{i=r+1}^n\frac{1}{i-1}$$
+
+\end{document}
