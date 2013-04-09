@@ -61,7 +61,7 @@ Suppose that all points are equally likely with probability $p$. Then by the thi
 
 \section*{Additional problems}
 \subsection*{1}
-Count the number of flip-sequences that have no consecutive heads. There can be 0, 1, 2, 3, or 4 heads in the sequence. If there are no heads, then that's one case. If there is 1 head, then there are 8 places to put it. If there are 2 heads, then we think of placing the 6 tails in a row and choosing two gaps to put the heads in (this includes the ends), so there are $\binom{7}{2}$ ways to place two heads. For 3 heads, we do a similar calculation and get $\binom{6}{3}$ ways, and for 4 heads we have $\binom{5}{4}$ ways. Add them together and get 54, so the probability is $\frac{55}{2^8}$.
+Count the number of flip-sequences that have no consecutive heads. There can be 0, 1, 2, 3, or 4 heads in the sequence. If there are no heads, then that's one case. If there is 1 head, then there are 8 places to put it. If there are 2 heads, then we think of placing the 6 tails in a row and choosing two gaps to put the heads in (this includes the ends), so there are $\binom{7}{2}$ ways to place two heads. For 3 heads, we do a similar calculation and get $\binom{6}{3}$ ways, and for 4 heads we have $\binom{5}{4}$ ways. Add them together and get 55, so the probability is $\frac{55}{2^8}$.
 \subsection*{2}
 In general, for $n$ speakers and $k$ possible dates, this is the problem of finding a bipartite matching between $2n$ nodes with each node having $k$ edges. If we let $A$ be any subset of speakers and $\Gamma(A)$ be the set of dates which any speaker in $A$ regarded as possible, then there is no perfect matching iff for some $A$ we have $|A|>|\Gamma(A)|$ (Kleinberg/Tardos, Algorithm Design, Prop. 7.39 and 7.40). 
 
