@@ -27,7 +27,7 @@ There are $\binom{12}{5}=792$ ways to choose the 5 men and $\binom{10}{5}=252$ w
 \subsection*{1.20t}
 This is equivalent to calculating the number of ways to distribute $n-\sum m_i$ balls among $r$ urns. Given an instance of this, we can transform it into an instance of the original problem by adding $m_i$ balls to urn $i$, and givan an instance of the original problem, we can transform it into an instance of this by taking away $m_i$ balls from the $i$th urn. 
 
-In turn, this is the same as finding the number of nonzero solutions to $u_1+u_2+\cdots+u_r=k=n-\sum m_i$, where each of the $u_i$ are nonnegative. This is $\binom{k-r-1}{r-1}$, so the number we're looking for is $\binom{n-\sum m_i-r-1}{r-1}$.
+In turn, this is the same as finding the number of nonzero solutions to $u_1+u_2+\cdots+u_r=k=n-\sum m_i$, where each of the $u_i$ are nonnegative. This is $\binom{k+r-1}{r-1}$, so the number we're looking for is $\binom{n-\sum m_i+r-1}{r-1}$.
 \subsection*{2.28}
 Without replacement: 
 
@@ -67,7 +67,8 @@ In general, for $n$ speakers and $k$ possible dates, this is the problem of find
 
 In the 3 by 2 case, this is only possible if one of the dates is not indicated by any speaker, since $|\Gamma(A)|$ is always at least 2. In general, there are 3 ways for each speaker to choose his dates, and there are 3 speakers, so there are 27 possiblities. If one of the dates is to be chosen by no speaker, then this reduces it down to 3 possibilities, so the probability of the existance of a bipartite matching is $24/27$.
 
-In the 4 by 2 case, this can happen if all speakers choose among three dates or if any three speakers choose the same two dates. There are $(3\text{ choices per speaker})^{(4\text{ speakers})}(4\text{ sets of 3 dates})=324$ ways for the first to occur, and $(4\text{ sets of 3 speakers})(6\text{ sets of 2 dates})(5\text{ choices for the remaining speaker})+(6\text{ ways for all speakers to choose the same days})=126$ ways for the second to occur. The overlap is when all speakers choose among three dates and three of them pick the same two. The overlap happens iff in the second case, the remaining speaker picks one of the two dates the others picked as one of his two dates (3 choices for the remaining speaker), so we get an overlap of size $72$. Thus, there are $324+126-72=378$ ways for a bipartite matching to not exist, and the sample space has size $(6\text{ choices per speaker})^{4\text{ speakers}}=1296$, so the probability that one does exist is $\frac{17}{24}$.
+In the 4 by 2 case, this can happen if all speakers choose among three dates or if any three speakers choose the same two dates. There are $(3\text{ choices per speaker})^{(4\text{ speakers})}(4\text{ sets of 3 dates})-(6\text{ double-countings of everyone picking the same two})=318$ ways for the first to occur. In order for the second to occur without the first occurring, the fourth speaker would have to pick the two days not picked by the other 3 as his choice, so there are $(4\text{ sets of 3 speakers})(6\text{ choices for the two days})=24$ ways for that to happen. Adding, we get $342$ ways for a matching to fail to exist, and the sample space has size $($6 choices for each speaker$)^{(4\text{ speakers})}=1296$, so the probability of a matching existing is $53/72$.
+
 \subsection*{3}
 Use the law of total probability. We have 
 \begin{align*}
