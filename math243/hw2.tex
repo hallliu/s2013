@@ -50,4 +50,19 @@ Suppose that we had a polynomial $f$ which is zero on the zero set of $y-e^x$. E
 Finitely generated: Since every coordinate ring is isomorpic to $\cpr/I$, where $I$ is a radical ideal, we can generate the coordinate ring by taking the images of $x_1,\ldots,x_n$ under the quotient map.
 
 Reduced: Suppose we had some $a\in\cpr$ such that $\bar{a}^n=0$ in $\cpr/I$. Then we have that $a^n\in I$ which implies $a\in I$ since $I$ is radical, which implies that $\bar{a}=0$. Thus there can be no nonzero nilpotents in $\cpr/I$.
+\subsection*{2.5.1}
+Suppose the pullback is injective. Then, let $f_1,\ldots,f_m$ be the images of $y_1,\ldots,y_m$ under $F^\#$, and define $F$ as usual by taking $F(a)=(f_1(a),\ldots,f_m(a))$. Showing that $F(V)$ is dense in $W$ means that the closure of $F(V)$ is $W$ and not some strict subvariety of $W$. This means that we need to show that any polynomial which vanishes on $F(V)$ also vanishes on all of $W$. Suppose that $g$ vanishes on $F(V)$. Then for each $a\in V$, we have $g(F(a))=0$, or $g\circ F\in I(V)$, or $g\circ F=0$ in $\cn[V]$. By injectivity, since $g\in\cn[W]$ maps to $g\circ F$ under $F^\#$, we have $g=0$ in $\cn[W]$, implying that $g$ vanishes on $W$.
+
+Conversely, suppose any polynomial vanishing on $F(V)$ also vanishes on $W$. Letting $g\in\cn[W]$ and supposing $F^\#(g)=0$, this implies that $g\circ F=0$, or $g$ vanishes on $F(V)$, which implies that $g$ vanishes on $W$, which implies $g=0$, or that $F^\#$ is injective.
+\subsection*{2.5.2}
+Define $F$ as above, and note that $F$ being injective is equivalent to $F$ defining an isomorphism between $V$ and some subvariety of $W$. Then, if we suppose that $F^\#$ is surjective, and $F(a)=F(b)$ for $a,b\in V$, we have $f_i(a)=f_i(b)\implies F^\#(g)(F(a))=F^\#(g)(F(b))$ for all $g\in\cn[W]$. Note that $F^\#(g)(F(x))$ is an element of $\cn[V]$, so if $a\neq b$, we contradict the surjectivity of $F^\#$ since there are always functions in $\cn[V]$ that distinguish between $a$ and $b$. Thus we have that $F$ is injective.
+
+Conversely, suppose $F$ is injective. Then define $F^{-1}$ as the inverse of the isomorphism between $V$ and some subvariety of $W$. Then for any $f\in\cn[V]$, take $g=f\circ F^{-1}\in\cn[W]$. We have $F^\#(g)=f\circ F^{-1}\circ F=f$, so $F^\#$ is surjective.
+\subsection*{2.5.3}
+By the inverse function theorem, the Jacobian of $F^{-1}$ is the inverse of the Jacobian of $F$, so since $F^{-1}$ is smooth everywhere, the Jacobian of $F$ must be invertible everywhere. Since the determinant is a complex polynomial in $n$ variables, it must be zero at some point unless it generates the whole polynomial ring, which implies that it's a constant polynomial.
+\subsection*{3}
+a. A point $(x,y,z)$ is in $V(J)$ iff $z=0$ and $x^2+y^2+z^3=0$, or iff $z=0$ and ($x-iy$ or $x+iy$) are zero. Since $x+iy$ and $x-iy$ are both irreducible, we have that $V(J)=V((z,x+iy))\cup V((z,x-iy))$
+
+b. By the correspondence of irreducible varieties and prime ideals, we have that $J=(z,x+iy)\cap(z,x-iy)$.
+
 \end{document}
