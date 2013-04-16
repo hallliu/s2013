@@ -50,4 +50,34 @@ c. False. Suppose we are choosing random integers uniformly distributed from $0$
 If we use positive information in (b), it's still false: consider the random number thing again, let $F=[0,5]$, $E=[2,7]$, $G=[4,9]$. We have $P(E|F)=3/5>P(F)$ and $P(G|E)=3/5>P(G)$, but $P(G|F)=1/5<P(G)$.
 
 If we use positive information in (c), it's still false: let $F=[0,4]$, $G=[4,8]$, and $E=\{0,8\}$. Then $P(E|F)=P(E|G)=1/4>P(E)=1/5$, but $E$ and $FG$ have empty intersection.
+\subsection*{3.9}
+We have $P(A)=1/2$, $P(B)=1/2$, and $P(C)=1/2$. $P(A\cap B)=\Pt{both heads}=1/4=P(A)P(B)$, $P(A\cap C)=\Pt{first is head and second is same as first}=1/4=P(A)P(C)$, and $P(B\cap C)=\Pt{second is head and first is same as second}=1/4=P(B)P(C)$. Thus they're pairwise independent. However, $P(A\cap B\cap C)=P(HH)=1/4\neq P(A)P(B)P(C)$.
+\subsection*{3.21}
+The computations are really tedious, so I'm just going to get the general case first and calculate them from there.
+
+d. Suppose we know the values of $P_{n-1,m}$ and $P_{n,m-1}$. Then, $P_{n,m}=\frac{n}{n+m}\Pt{A is always ahead $|$ the last vote is for A}+\frac{m}{n+m}\Pt{A is always ahead $|$ the last vote is for B}$. For the first conditional, we have that $A$ is always ahead iff for the first $n+m-1$ ballots cast, $A$ was always ahead, since the last ballot being for $A$ will not change $A$ being ahead. A similar result holds for the second conditional, as the condition $n>m$ implies that $A$ will always be ahead after the last vote. Thus, we have $P_{n,m}=\frac{nP_{n-1,m}}{n+m}+\frac{mP_{n,m-1}}{n+m}$.
+
+Now, for all $m\geq n$, fix $P_{n,m}=0$. For the base cases, we have $P_{n,0}=1$ for all $n$.
+
+a.\begin{align*} 
+    P_{2,1}&=P_{1,1}\frac{2}{3}+P_{2,0}\frac{1}{3}=1/3\\
+    P_{3,1}&=P_{2,1}\frac{3}{4}+P_{3,0}\frac{1}{4}=1/2\\
+    P_{3,2}&=P_{2,2}\cdots+P_{3,1}\frac{2}{5}=1/5\\
+    P_{4,1}&=P_{3,1}\frac{4}{5}+P_{4,0}\frac{1}{5}=3/5\\
+    P_{4,2}&=P_{3,2}\frac{4}{6}+P_{4,1}\frac{2}{6}=1/3\\
+    P_{4,3}&=P_{3,3}\cdots+P_{4,2}\frac{3}{7}=1/7\\
+\end{align*}
+
+b. To find $P_{n,1}$, we note that there are $n+1$ places for the vote for $B$ to appear, and $A$ will always come out ahead if the vote appears after the second vote for $A$ has been counted. Thus the probability is $\frac{n-1}{n+1}$. To find $P_{n,2}$, we note that there are now $\frac{(n+2)(n+1)}{2}$ places for the two $B$ votes to go. $A$ fails to always be ahead if there is a $B$ vote in the first place or in the second place, or if there is a $B$ vote in both the third place and the fourth place. There are $n+1$ possibilities for the first case, $n$ for the second case, and $1$ for the third case, so we get $P_{n,2}=1-\frac{4n+4}{(n+2)(n+1)}=\frac{n-1}{n+2}$.
+
+c,e. Hypothesis: $P_{n,m}=\frac{n-m}{n+m}$ for $n>m$ and $0$ otherwise. Proof: Statement is valid for base cases $P_{n,0}$ and $P_{0,m}$. Assume the inductive hypothesis for $P_{n',m'}$ if $n'<n$ or $m'<m$. Then, $P_{n,m}=\frac{n}{n+m}\frac{n-1-m}{n-1+m}+\frac{m}{n+m}\frac{n-m+1}{n+m-1}=\frac{n^2-n-nm+nm-m^2+m}{(n+m)(n+m-1)}=\frac{n-m}{n+m}$.
+\subsection*{3.29}
+Follow the notation of 5e, except let $H_m$ denote the event that the next $m$ flips are all heads. Now, $P(H_m|C_i)=\left(\frac{i}{k}\right)^m$, and $P(C_i|F_n)$ remains unchanged, so
+$$P(H_m|F_n)=\frac{\sum_{i=0}^k\left(\frac{i}{k}\right)^{n+m}}{\sum_{j=0}^k(j/k)^n}\approx\frac{\int_0^1x^{n+m}}{\int_0^1x^n}=\frac{n+1}{n+m+1}$$
+\section*{Additional Problems}
+\subsection*{1}
+Since the probability of going into each box is equal, we expect that $P(N_1=i)=P(N_2=j)$ if $i=j$. Then, 
+$$P(N_1=i)=\sum_{N=i}^\infty P(N)P(N_1=i|\text{ total number of balls is }N)=\frac{1}{e}\sum_{N=i}^\infty\frac{\frac{N!}{(N-i)!i!}}{N!2^N}=\frac{1}{ei!2^i}\sum_{N=0}^\infty\frac{1}{N!2^{N}}=\frac{1}{\sqrt{e}i!2^i}$$
+\subsection*{2}
+Let $N$ denote the total number of balls. We have $P(N_1=i,N_2=j)=P(N_1=i,N=i+j)=P(N_1=i|N=i+j)P(N=i+j)=\binom{i+j}{i}\frac{1}{e(i+j)!}$.
 \end{document}
