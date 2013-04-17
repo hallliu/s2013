@@ -38,7 +38,7 @@ Option (a) gives the correct answer with probability $p$. In option (b), the pro
 \subsection*{3.76}
 The probability that event $E$ occurs before $F$ is equal to the sum over all natural numbers $n$ of $\Pt{Event $E$ occurs on the $n$th iteration $|$ neither event $E$ nor event $F$ occur before event $n$}$. Since iterations of experiments are independent, this reduces to a product. The first term is $P(E)$, and the second term is $(1-(P(E)+P(F)))^{n-1}$, since $E$ and $F$ are mutually exclusive. Thus, summing from $1$ to $\infty$ gives $\frac{P(E)}{P(E)+P(F)}$.
 \subsection*{3.90}
-Consider the complement of this, or when one of outcomes 1 or 2 fail to occur. Denote the former by $E$ and the latter by $F$. Then, we are looking for $P(E\cup F)=P(E)+P(F)-P(E\cap F)$. We have $P(E)=(p_0+p_2)^n$ (all outcomes are either 0 or 2), $P(F)=(p_0+p_1)^n$ (all outcomes are either 0 or 1), and $P(E\cap F)=p_0^n$ (all outcomes must be 0 for both 1 and 2 to fail to occur). Thus, the probability is $(p_0+p_1)^n+(p_0+p_2)^n-p_0^n$.
+Consider the complement of this, or when one of outcomes 1 or 2 fail to occur. Denote the former by $E$ and the latter by $F$. Then, we are looking for $P(E\cup F)=P(E)+P(F)-P(E\cap F)$. We have $P(E)=(p_0+p_2)^n$ (all outcomes are either 0 or 2), $P(F)=(p_0+p_1)^n$ (all outcomes are either 0 or 1), and $P(E\cap F)=p_0^n$ (all outcomes must be 0 for both 1 and 2 to fail to occur). Thus, the probability is $1-((p_0+p_1)^n+(p_0+p_2)^n-p_0^n)$.
 \section*{Ch 3 Theoretical Exercises}
 \subsection*{3.5}
 a. True. We have $P(F|E)=\frac{P(E|F)P(F)}{P(E)}\leq\frac{P(E)P(F)}{P(E)}=P(F)$. If we assume positive information, then $P(F|E)=\frac{P(E|F)P(F)}{P(E)}\geq\frac{P(E)P(F)}{P(E)}=P(F)$
