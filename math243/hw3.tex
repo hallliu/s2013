@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[cm]{fullpage}
+\newcommand{\nc}{\newcommand}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\nc{\cn}{\mathbb{C}}
+\nc{\rn}{\mathbb{R}}
+\nc{\qn}{\mathbb{Q}}
+\nc{\zn}{\mathbb{Z}}
+\nc{\aff}{\mathbb{A}}
+\nc{\proj}{\mathbb{P}}
+\nc{\pd}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\nc{\ep}{\epsilon}
+\nc{\topo}{\mathscr{T}}
+\nc{\basis}{\mathscr{B}}
+\nc{\nullset}{\varnothing}
+\setlength{\parindent}{0mm}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+
+\subsection*{3.4.3}
+Consider the curves defined by $V=Z(xz-y^2)\subset\proj^2$ and $W=Z(x)$. The latter is a copy of the projective line in $\proj^2$. As in the example in the book, define $\phi:W\to V, [0:y:z]\mapsto [y^2:yz:z^2]$ and $\phi^{-1}:[x:y:z]\mapsto\begin{cases}[0:x:y],&x\neq0\\[0:y:z],&z\neq0\end{cases}$. We have $\phi\circ\phi^{-1}([x:y:z])=\phi([0:x:y])=[x^2:xy:y^2]=[x^2:xy:xz]=[x:y:z]$ if $x\neq0$ and $=\phi([0:y:z])=[y^2:yz:z^2]=[xz:yz:z^2]=[x:y:z]$ if $z\neq0$. The other way, we have $\phi^{-1}\circ\phi([0:y:z])=\phi^{-1}([y^2:yz:z^2])=[0:y^2:yz]=[0:y:z]$ if $y\neq0$ and $=[0:yz:z^2]=[0:y:z]$ if $z\neq0$. However, these are not projectively equivalent, since their coordinate rings are $\cn[x,y,z]/(xz-y^2)$ and $\cn[x,y,z]/(x)\equiv\cn[y,z]$ are not isomorphic.
+\subsection*{3.4.4}
+We can show that the affine varieties are isomorphic by exhibiting an isomorphism between their coordinate rings. Note that the coordinate ring of $V(x)$ is isomorphic to $\cn[y,z]$. Define a map $\cn[x,y,z]\to\cn[y,z]$ as $x\mapstoy^4+z^4, y\mapsto y, z\mapsto z$. This is surjective as seen by restricting to the set of polynomials which do not involve x. The kernel of this map is equal to $(x-y^4-z^4)$ since $x-y^4-z^4$ is irreducible, so we have that the coordinate rings are isomorphic.
+
+The projective closure of $V(x)$ is the zero set of the homogenization of the ideal $(x)$ in $\cn[w,x,y,z]$, which is still $(x)$ since $x$ is homogeneous and $(x)$ is maximal. Thus the closure of $V(x)$ is isomorphic to $\proj^2$, which has no singular points. 
+\end{document}
