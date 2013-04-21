@@ -20,7 +20,10 @@
 \nc{\topo}{\mathscr{T}}
 \nc{\basis}{\mathscr{B}}
 \nc{\nullset}{\varnothing}
+<<<<<<< HEAD
 \nc{\conj}{\overline}
+=======
+>>>>>>> 65bdcfe6800144d21eca8231f8c60def9649a6ad
 \setlength{\parindent}{0mm}
 \begin{document}
 Name: Hall Liu
@@ -28,6 +31,7 @@ Name: Hall Liu
 Date: \today 
 \vspace{1.5cm}
 
+<<<<<<< HEAD
 \subsection*{3.2.1}
 Let $\{U_i\}$ be an open cover of a projective variety $Z$. Consider the preimage of $Z$ in $\aff^{n+1}$ and each of the open covering sets under the quotient map. Consider the intersection of $\pi^{-1}(Z)$ with the set of points with absolute value $1$. This being a closed and bounded set, it is compact, so there exists a finite subcover by preimages of the $U_i$. Then, the finite set of the $U_i$ from this subcover also cover $Z$, since $[z_0:\ldots z_n]\in Z\implies 1/|z|(z_0,\ldots,z_n)\in\pi^{-1}(U_i)$ for some $i$, and taking the image under $\pi$ gives that $[z_0:\ldots:z_n]\in U_i$.
 
@@ -45,4 +49,10 @@ Take any $H\in\~{I}$. We now wts that $H$ vanishes at $[0:0:0:1]$. We know that 
 \subsection*{3.3.3}
 Suppose we have some homogeneous polynomial $f$ such that $f^n\in\~{I}$. Then, if we evaluate at $x_0=1$, we have $\conj{f}^n\in I$, implying that $\conj{f}\in I$. Applying the homogenization process to $\conj{f}$, we get that $f\in\~{I}$. For a general polynomial $g$ such that $g^n\in\~{I}$, write $g=g^{(0)}+g^{(1)}+\cdots+g^{(d)}$. We have that the maximum degree of a monomial in $g^n=h$ is $nd$, so we can write $h=h^{(0)}+\cdots+h^{(nd)}$. Since $h\in\~{I}$, all the homogeneous components of $h$ are also in $\~{I}$. In particular, $h^{(0)}={g^{(0)}}^n\in\~{I}$, which means $g^{(0)}\in\~{I}$. Further, $h^{(n)}$ can be written as ${g^{(1)}}^n$ plus more terms which all have $g^{(0)}$ in them, which implies that $g^{(1)}\in\~{I}$. Proceeding this way inductively, we will have that $g\in\~{I}$.
 %Since the homogenization of an ideal $\~{I}$ is homogeneous, take a set of homogeneous polynomials $\{h_i\}$ as its generators. Suppose that $f^n\in\~{I}$ for some $n$. Then $f^n=\sum a_ih_i$ for some polynomials $a_i$
+\subsection*{3.4.3}
+Consider the curves defined by $V=Z(xz-y^2)\subset\proj^2$ and $W=Z(x)$. The latter is a copy of the projective line in $\proj^2$. As in the example in the book, define $\phi:W\to V, [0:y:z]\mapsto [y^2:yz:z^2]$ and $\phi^{-1}:[x:y:z]\mapsto\begin{cases}[0:x:y],&x\neq0\\[0:y:z],&z\neq0\end{cases}$. We have $\phi\circ\phi^{-1}([x:y:z])=\phi([0:x:y])=[x^2:xy:y^2]=[x^2:xy:xz]=[x:y:z]$ if $x\neq0$ and $=\phi([0:y:z])=[y^2:yz:z^2]=[xz:yz:z^2]=[x:y:z]$ if $z\neq0$. The other way, we have $\phi^{-1}\circ\phi([0:y:z])=\phi^{-1}([y^2:yz:z^2])=[0:y^2:yz]=[0:y:z]$ if $y\neq0$ and $=[0:yz:z^2]=[0:y:z]$ if $z\neq0$. However, these are not projectively equivalent, since their coordinate rings are $\cn[x,y,z]/(xz-y^2)$ and $\cn[x,y,z]/(x)\equiv\cn[y,z]$ are not isomorphic.
+\subsection*{3.4.4}
+We can show that the affine varieties are isomorphic by exhibiting an isomorphism between their coordinate rings. Note that the coordinate ring of $V(x)$ is isomorphic to $\cn[y,z]$. Define a map $\cn[x,y,z]\to\cn[y,z]$ as $x\mapstoy^4+z^4, y\mapsto y, z\mapsto z$. This is surjective as seen by restricting to the set of polynomials which do not involve x. The kernel of this map is equal to $(x-y^4-z^4)$ since $x-y^4-z^4$ is irreducible, so we have that the coordinate rings are isomorphic.
+
+The projective closure of $V(x)$ is the zero set of the homogenization of the ideal $(x)$ in $\cn[w,x,y,z]$, which is still $(x)$ since $x$ is homogeneous and $(x)$ is maximal. Thus the closure of $V(x)$ is isomorphic to $\proj^2$, which has no singular points. 
 \end{document}
