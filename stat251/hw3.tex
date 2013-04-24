@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[cm]{fullpage}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\newcommand{\ep}{\epsilon}
+\newcommand{\openm}{\begin{pmatrix}}
+\newcommand{\closem}{\end{pmatrix}}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\var}{var}
+\newcommand{\nc}{\newcommand}
+\newcommand{\rn}{\mathbb{R}}
+\nc{\Pt}[1]{P(\text{#1})}
+\nc{\nn}{\mathbb{N}}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+
+\subsection*{1}
+a. $\Pt{0 aces}=\binom{48}{10}/\binom{52}{10}=0.413$. $\Pt{1 ace}=\binom{48}{9}\binom{4}{1}/\binom{52}{10}=0.424$. $\Pt{2 aces}=\binom{48}{8}\binom{4}{2}/\binom{52}{10}=0.143$. Using a similar pattern, $\Pt{3 aces}=0.0186$ and $\Pt{4 aces}=0.000776$. Denote these as $p_0,\ldots,p_4$. Then, $\mu=E(N)=p_1+2p_2+3p_3+4p_4=0.769$.
+
+b. $\var(N)=\sum_{i=0}^4p_i(i-\mu)^2=0.584$.
+
+c. With replacement, we have $p_i=\binom{10}{i}(1-4/52)^{10-i}(4/52)^i$ for $i\in[0,10]$. Due to the large number of points, the numerical computations are done in a computer. We get $E(N)=0.769$ and $\var(N)=0.710$.
+\subsection*{2}
+a. $P(N)=\Pt{Coin 1 and $N$ heads}+\Pt{Coin 2 and $N$ heads}$. The former is $1/2\binom{n}{N}(1-p_1)^{n-N}p_1^N$ and the latter is $1/2\binom{n}{N}(1-p_2)^{n-N}p_2^N$, so in total $P(N)=\frac{1}{2}((1-p_1)^{n-N}p_1^N+(1-p_2)^{n-N}p_2^N)$. To compute $E(N)$, we take 
+$$\frac{1}{2}\sum_{i=0}^nN\binom{n}{N}((1-p_1)^{n-N}p_1^N+(1-p_2)^{n-N}p_2^N)$$
+
+b. $$\var(N)=\frac{1}{2}\sum_{i=0}^n(N-E(N))^2\binom{n}{N}((1-p_1)^{n-N}p_1^N+(1-p_2)^{n-N}p_2^N)$$
+\subsection*{3}
+Fix $n$, and let $E_k$ denote the expected number of moves until the game ends when the balance is at $(k,n-k)$. For $k=0$ or $k=n$, we have $E_k=0$. Otherwise, after one move, we are at the state $(k-1,n-k+1)$ or the state $(k+1,n-k-1)$, with the expected number of moves until the game ends being $E_{k-1}$ and $E_{k+1}$, resp. Thus, we have the relation $E_k=1/2(1+E_{k-1})+1/2(1+E_{k+1})=1/2(E_{k-1}+E_{k+1})+1$. We want to find a relation between $E_k$ and $E_1$. Suppose for the purpose of induction that $E_i=iE_1-i(i+1)$ for $i\leq k$. Then, we have $kE_1-k(k+1)=E_k=1/2(E_{k-1}+E_{k+1})+1=1/2((k-1)E_1-k(k-1)+E_{k+1})+1$, so rearranging gives $E_{k+1}=(k+1)E_1-(k+1)(k+2)$. Thus, we have $E_n=0=nE_1-n(n+1)\implies E_1=n+1\implies E_k=k(n+1)-k(k+1)$.
+
+%This is a random walk on $[0,n]$ starting at $k$, where position is the amount of money that Bob has. For the game to end on step $N$, the position must be at $0$ or $n$ at step $N$. For the position to be at $0$, the position must have shifted right $(N+k)/2$ times and shifted left $(N-k)/2$ times. Further, the number of right-shifts must be less than the number of left-shifts plus $k$ at each step before $N$. This corresponds to paths from $(0,0)$ to $((N+k)/2,(N-k)/2)$ that don't cross through the diagonal going from $(k,0)$ to $((N+k)/2,(N-k)/2)$ by mapping right-shifts to right-shifts and left-shifts to up-shifts (e.g. the following pictures):
+%\vspace{3cm}
+%
+%To count these, we first calculate the complement of these paths in the space of all paths from $(0,0)$ to $((N+k)/2,(N-k)/2)$. Call this complement $A$. We want to show that these are in bijection with paths from $(0,0)$ to $((N+k)/2+1,(N-k)/2-1)$ ($B$). To define this bijection, consider a path in $A$. There is a point at which it first crosses over the diagonal. The point at which that happens is of the form $(a+k,a)$, since the diagonal is the set of points at which the $y$-coordinate is 
+\subsection*{4}
+%If we have $n$ people, we can either have someone get their hat back or noone get their hat back. In the first case, if we remove one person who gets their hat back from consideration, we're left with a permutation on $n-1$ people, so the expected number of people who get their hats back in that case is $E_{n-1}+1$. In the second case, where nobody gets their hat back, the expectation is $0$. We now want to compute the probability that nobody gets their hat back. 
+a. Any individual person is a fixed-point of the permutation with probability $1/n$. This means that the expected number of fixed-points on singleton subsets is $1/n$. By linearity, the total number of expected fixed-points is the sum of the expectation on the $n$ singletons, or $1$.
+
+b. Let $N$ denote the number of fixed-points. We have $\var(N)=E(N^2)-E(N)^2=E(N^2)-1$. Let $N_i$ be the number of fixed-points on the $i$th singleton. Then, $E(N^2)=E((\sum N_i)^2)=\sum E(N_i^2)+\sum_{i\neq j}N_iN_j$. For each $i$, $E(N_i^2)=\Pt{$i$ is a fixed-point}1^2+\Pt{$i$ is not a fixed-point}0=1/n$. To compute $E(N_iN_j)$, we have that $N_iN_j=1$ iff both $i$ and $j$ are fixed-points. There are $(n-2)!$ of those, so the probability that they're both fixed-points is $\frac{1}{(n(n-1)}$, and that's the expected value too. There are $n(n-1)/2$ subsets $\{i,j\}$ where $i\neq j$, and each of them shows up twice in the second sum, so we have that $E(N^2)=2\implies \var(N)=1$.
+\subsection*{5}
+a. If $k$ is the final result, we want to show that $P(k=K)=1/6$ for $K\in[1,6]$. First, note that $P(N=n)=1/8$ for each $n$, since $P(N=n)=P(N\&4=n\&4\text{ and }N\&2=n\&2\text{ and }N\&1=n\&1)$, where $\&$ denotes bitwise AND. However, the values of $N\&(2^i)$ are just the values of the indicators of coin flips, so they're independent each with probability $1/2$, so we get $P(N=n)=1/8$. Thus, we have $P(k=K)=P(N=K|N\in[1,6])=1/8/(6/8)=1/6$.
+
+b. The number of tosses needed to get between $1$ and $6$ is geometrically distributed with parameter $3/4$, so the expected value is $4/3$.
+\subsection*{6}
+a. $N=6$ iff at least 2 of the rolls are $6$, and this can happen in $1+3*6=19$ ways out of $6^3$, so the probability is $0.0880$.
+
+b. $N=n$ iff $n$ occurs as one of the three rolls, one of the other rolls is $\leq n$, and the other is $\geq n$. Note that $P(N=n)=P(N=6-n+1)$ -- if a 3-tuple of rolls $(a,n,b)$ has $n$ as the second-largest, the three-tuple $(6-a+1,6-n+1,6-b+1)$ has $6-n+1$ as the second-largest, and this map has a clear inverse. Thus, if we denote $P(N=n)$ as $p_n$, we have $E(N)=p_1+2p_2+3p_3+4p_3+5p_2+6p_1=7(p_1+p_2+p_3)=7/2$.
+\subsection*{7}
+a. Let $X_i$ be the indicator for the event that the $i$th flip is a head followed by a tail. We have $P(X_i=1)=1/4$, so $E(X_i)=1/4\implies E(X)=E(\sum X_i)=(n-1)/4$.
+
+b. We have $\var(X)=E(X^2)-E(X)^2$. As in (4), expand $E(X^2)$ to get $\sum E(X_i^2)+\sum_{i<j}2E(X_iX_j)$. $E(X_i^2)$ is still $1/4$ with the same calculation as in (4). However, $E(X_iX_j)=0$ when $j-i=1$, since two consecutive heads can't be both followed by a tail. However, if $|j-i>1$, $X_i$ and $X_j$ are independent because the coin flips are, so we have $E(X_iX_j)=E(X_i)E(X_j)=1/16$ in that case. Since there are $\binom{n-1}{2}$ pairs $\{i,j\}$ and $n-2$ of those are adjacent, we have that the second sum resolves to $\frac{1}{8}((n-1)(n-2)/2-(n-2))=\frac{1}{16}(n-3)(n-2)$, the first sum to $\frac{1}{4}(n-1)$, so the variance works out to be 
+$$\frac{1}{16}(n-3)(n-2)+\frac{1}{4}(n-1)-\frac{1}{16}(n-1)^2$$
+\subsection*{Bonus}
+a. Let $N_n$ denote the number at time $n$. If we're given that $N_{n-1}=m$, $N_n$ is the sum of $m$ independent Poisson random variables minus $m$, which we know to be a Poisson RV with mean $m\lambda$. Thus, $E(N_n|N_{n-1}=m)=m\lambda-m$. To find $E(N_n)$, we have $E(N_n)=\sum_m P(N_{n-1}=m)E(N_n|N_{n-1}=m)=(\lambda-1)\sum_mmP(N_{n-1}=m)=(\lambda-1) E(N_{n-1})$. Since $E(N_0)=1$, we have $E(N_n)=(\lambda-1)^n$.
+
+b. Variance is $E(N_n^2)-E(N_n)^2$. We know the latter, and the former can be written as $\sum_m P(N_{n-1}=m)E(N_n^2|N_{n-1}=m)$. The conditional expectation is the expectation of the square of a sum of $m$ Poisson RVs minus m, or the expectation of a square of a Poisson RV with parameter $m\lambda$ minus $m$. However, if we let $X\sim\text{Poisson}(m\lambda)-m$, we have $m\lambda=\var(X)=E(X^2)-E(X)^2=E(X^2)-m^2(\lambda-1)^2$, so $E(X^2)=m\lambda+m^2(\lambda-1)^2$. Going back to the sum, we get 
+\begin{align*}
+    \sum_m P(N_{n-1}=m)E(N_n^2|N_{n-1}=m)&=\sum_m P(N_{n-1}=m)(m\lambda+m^2(\lambda-1)^2)\\
+    &=(\lambda-1)^2\sum_mm^2P(N_{n-1}=m)+\lambda\sum_mmP(N_{n-1}=m)\\
+    &=(\lambda-1)^2E(N_{n-1}^2)+\lambda E(P_{n-1})\\
+    &=(\lambda-1)^2E(N_{n-1}^2)+(\lambda-1)^{n-1}
+\end{align*}
+Let $a=\lambda-1$. We WTS that $E(N_n^2)=a^{2n}+a^{2n-2}+a^{2n-3}+\cdots+a^{n-1}$. Assume true for $k-1$ by induction. Then $E(N_k^2)=a^2(a^{2(k-1)}+a^{2(k-1)-2}+a^{2(k-1)-3}+\cdots+a^{k-2})+a^{k-1}=a^{2k}+a^{2k-2}+a^{2k-3}+\cdots+a^{k-1}$.
+
+Conveniently, $E(N_n)^2=a^{2n}$, so subtracting that off gives $\var(N_n)=\sum_{i=n-1}^{2n-2}(\lambda-1)^i$.
+\end{document}
