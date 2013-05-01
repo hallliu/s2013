@@ -65,7 +65,9 @@ a. Since the ideal of $X$ is principally generated, its homogenization must be g
 
 Now, if we had a morphism $H$ defined on all of $\proj^2$, it would need to agree with $\tilde{G}$ where it is defined. Thus, we'd need that $H([x:0:y])=[1:0]$ for all $x\neq0$ and $H([0:y:z])=[0:1]$ for all $y\neq0$. Since $H$ is continuous and it is constant on a dense subset of $[x:0:z]$ and $[0:y:z]$ (no restrictions on $x,y$), it must be constant on the whole of that set, which means that we can't agree on a value for $[0:0:1]$.
 
-\noindent d.
+\noindent d. First, note that we don't have a problem if $b\neq0$, since then we'd have that $[0:0:1]$ is not in $\bar{X}$, so we can just use $\tilde{G}$ from above as our morphism. Thus, for the rest of this part, assume $b=0$. On the affine slice containing $X$ (and the slice $x\neq0$), we can define $G$ as $[x:y:z]\mapsto[x:z]$, since $z$ is nonzero there. For anything in $\conj{X}-X$, we must have $x=0$, as setting $z=0$ in $zy^2-(x^3+axz^2)$ gives $x^3$. Thus, $\conj{X}-X$ is the single point $[0:1:0]$, contained in the affine slice $y\neq0$. 
+
+On the slice $y\neq0$, let $G$ map $[x:y:z]$ to $[y^2-axz:x^2]$. This is well defined when $y\neq0$, as $x=0$ implies that the first coordinate is nonzero and $x\neq0$ implies that the second coordinate is. It agrees with $[x:z]$ on the intersection with the slice $z\neq0$, since $[x:z]=[x^3:zx^2]=[zy^2-axz^2:zx^2]=[y^2-axz:x^2]$ (we can do this because $x\neq0$ on this slice in the variety). Similarly, we can do the same on the intersection with the slice $x\neq0$, as $z\neq0$ on that slice of the variety.
 \subsection*{Midterm question 4}
 On the affine patches $x\neq0$ and $z\neq0$, the map is polynomial and well-defined, so no problems there. On the affine patch $y\neq0$, let the morphism be defined by $[x:y:z]\mapsto[y^2:(x-z)(x-2z)]$. This is clearly well-defined since the first coordinate is nonzero. We now need to show that it agrees with $[x:y:z]\mapsto[x:z]$ on the intersection with the other two patches. 
 
