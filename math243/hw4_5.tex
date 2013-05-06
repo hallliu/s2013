@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[cm]{fullpage}
+\newcommand{\nc}{\newcommand}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\nc{\cn}{\mathbb{C}}
+\nc{\rn}{\mathbb{R}}
+\nc{\qn}{\mathbb{Q}}
+\nc{\zn}{\mathbb{Z}}
+\nc{\aff}{\mathbb{A}}
+\nc{\proj}{\mathbb{P}}
+\nc{\pd}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\nc{\ep}{\epsilon}
+\nc{\topo}{\mathscr{T}}
+\nc{\basis}{\mathscr{B}}
+\nc{\nullset}{\varnothing}
+\nc{\openm}{\begin{pmatrix}}
+\nc{\closem}{\end{pmatrix}}
+\nc{\ovp}{\mathscr{O}_{V,p}}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+\subsection*{4.3.1}
+First, change coordinates to make the lines and point nicer. First apply a translation to move $p$ to $(0,0)$, then apply a rotation to bring $l'$ in line with the $y$-axis, then apply a scaling to bring $l$ to the line $x=1$. These three actions are all actions of $\text{Aff}(\aff^2)$ on $\aff^2$, so their composition is an automorphism of $\aff^2$. Call this automorphism $\phi$. Denote the projection map by $\psi$. For any $q\not\in l'$, $q'=phi(q)$ has $x$-coordinate not equal to $0$. Then, $\psi(q')=y/x$, where $q'=(x,y)$ and we identify points on $l$ with their $y$-coordinate and $(0,0),q',\text{ and }(1,y/x)$ lie on a line. Now we can translate back by applying $\phi^{-1}$, and we have that $\psi(q)=y/x$ still if we identify $l$ with $\aff^1$ by taking the old identification under $\phi^{-1}$, since affine transformations preserve lines. Since $\phi$ was a polynomial map, $y$ and $x$ are polynomial functions of the coordinates of $q$ with $x$ nonzero, so we have that the map is regular.
+\subsection*{4.3.2}
+The punctured plane is covered by the two open sets $U=\aff^2-V(x)$ and $V=\aff^2-V(y)$. If we let $g$ be a regular function on the punctured plane, then $g|_U=\frac{h_1}{k_1}$ and $g|_V=\frac{h_2}{k_2}$ for $h_i,k_i\in\cn[x,y]$. Now, $k_1$ and $k_2$ can't vanish simultaneously anywhere but $(0,0)$, so the ideal $(k_1,k_2)$ must contain $(x,y)$. Thus, we can write $xg=(l_1k_1+l_2k_2)\frac{h_1}{k_1}$, and by the technique used in the proof in the book, we have that $g$ agrees with a function of the form $\frac{f_1}{x}$ on $U$. Similarly, $g$ also agrees with a function of the form $\frac{f_2}{y}$ on $V$, where $f_1,f_2\in\cn[x,y]$. This means that $\frac{f_1}{x}=\frac{f_2}{y}$ on the dense set $\aff^2-V(x,y)$, so $f_1y=f_2x$ as polynomials. However, since $x,y$ are relatively prime, $f_1$ must be divisible by $x$ and $f_2$ must be divisible by $y$, so $g$ turns out to be a polynomial when restricted to $U$ and $V$. This shows that the ring of regular functions on $\aff^2-\{0\}$ is contained in $\cn[x,y]$. Conversely, each function in $\cn[x,y]$ is a regular function, so we have that the two rings are equal. 
+
+Now, if $\aff^2-\{0\}$ were an affine variety, it'd be isomorphic to $\aff^2$ since they have the same coordinate rings. The isomorphism would induce an automorphism of $\cn[x,y]$, which take generators to generators. Let this automorphism take $x$ to $f_1$ and $y$ to $f_2$ ($f_1$ and $f_2$ are not nec. the same as above), where $f_1$ and $f_2$ generate the ideal $(x,y)$. Then, the isomorphism from $\aff^2-\{0\}$ to $\aff^2$ induced by this automorphism looks like $(f_1(x,y),f_2(x,y))$. However, $f_1$ and $f_2$ can't simultaneously vanish on $\aff^2-\{0\}$ because they're generators, which means that nothing can get mapped to $0$, which is a contradiction.
+\subsection*{3}
+a. The space of monic quadratic polynomials can be seen as a subset of $\aff^2$, where the coordinates of $x^2+ax+b$ are $(a,b)$. The restriction that the polynomial be squarefree is equivalent to the discriminant being nonzero, or $a^2-4b\neq0$. Thus, $\text{Conf}_2(\cn)$ can be identified with the complement of $V(x^2-4y)$ in $\aff^2$. Since this is the complement of a hypersurface, it is an quasiprojective affine variety.
+
+\noindent b. By the discussion in (4.2), we have that the coordinate ring of the complement is isomorphic to $\frac{\cn[x,y,z]}{(z(x^2-4y)-1)}$, which is in turn isomorphic to $\cn[x,y][\frac{1}{x^2-4y}]$. 
+
+\noindent c. Functions in the above ring are polynomials in $x$, $y$, and $\frac{1}{x^2-4y}$. If we view $x$ and $y$ as the coefficients of the $x^1$ and $x^0$ terms in the quadratic polynomial, we have a function from the space of monic quadratic squarefree polynomials to $\cn$.
+\subsection*{4}
+a. Suppose we can write $\phi=\frac{f}{g}=\frac{f'}{g'}$ with $g(p)\neq0$ and $g'(p)\neq0$. Then, $g'f=f'g$ as elements of $k[V]$, which means that $(g'f)(p)=(f'g)(p)$. Since $g'(p)$ and $g(p)$ are nonzero, we can divide out on each side by these values and obtain $\frac{f(p)}{g(p)}=\frac{f'(p)}{g'(p)}$.
+
+\noindent b. ((a)$\implies$(b)): Consider the ideal $\mathfrak{m}$ of all non-units. Any ideal which properly contains $\mathfrak{m}$ must contain a unit and thus be the whole ring, so $\mathfrak{m}$ must be maximal. Further, any proper ideal must only contain non-units, so any proper ideal is contained in $\mathfrak{m}$
+
+\noindent ((b)$\implies$(a)): Take any non-unit in $R$. It generates some proper ideal and thus is contained in the unique maximal ideal $\mathfrak{m}$. $\mathfrak{m}$ thus contains all non-units, and since it is not $R$, it must contain no units.
+
+The units of $\ovp$ are the functions $f/g$ where $f(p)\neq0$, so the non-units are the functions where $f(p)=0$. These form an ideal: they are closed under addition, as $f/g+f'/g'=(g'f+f'g)/(gg')$, where the numerator is zero at $p$ because both $f$ and $f'$ are zero, and they are closed under $\ovp$-multiplication because anything times $f$ evaluated at $p$ is still zero. This is the maximal ideal $\mathfrak{m}$ as shown above.
+\subsection*{5}
+Let the rational function be called $\phi$ with domain of definition $D$. Let $\phi'$ have the same domain of definition as $\phi$ and be equal to $\phi$ on $D$. We want to show that $fg'=f'g$ as functions on $V$ for some representation $f/g$ of $\phi$ and $f'/g'$ of $\phi'$. For points $d\in D$, we have that this is true by assumption. For points $p$ outside of $D$, any representation $f/g$ or $f'/g'$ will have $g(p)=g'(p)=0$, so $(fg')(p)=(f'g)(p)=0$. Thus $\phi$ and $\phi'$ are equal. As we showed in class, the domain of definition is an open set, so a rational function can be considered a function on the complement of some algebraic set (the ideal of denominators).
+\end{document}
