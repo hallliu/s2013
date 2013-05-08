@@ -38,8 +38,8 @@ We have $\var(X)=\var(X-a/2)=E((X-a/2)^2)-(E(X-a/2))^2$. Since $X-a/2\in[-a/2,a/
 I think this question is asking for $\text{ceil}(X)$? This is a discrete RV with pmf $p$, where $p(n)=P(n-1<X\leq n)=\int_{n-1}^ne^{-x}dx=e^{-(n-1)}-e^{-n}$.
 \subsection*{5}
 As $n\to\infty$, $X_n-n/2$ converges in distribution to a normal RV $N(0,n/4)$ by the central limit theorem. Thus, we want to find 
-$$\lim_{n\to\infty}\sqrt{n}\int_{x\sqrt{n}}^{x\sqrt{n}+1}\frac{1}{\pi\sqrt{n}}e^{-2t^2/n}=\frac{1}{\pi}\lim_{n\to\infty}\int_{x\sqrt{n}}^{x\sqrt{n}+1}e^{-2t^2/n}$$
-The latter integral is bounded between $e^{-2x^2}$ and $e^{(-2(x\sqrt{n}+1)^2)/n}$ by evaluating at the lower and upper bounds and using the monotony of the integrand. Expanding the lower bound, we have $e^{-2x^2}e^{-4x/\sqrt{n}}e^{-2/n}$. As $n\to\infty$, the second two exponential terms approach $1$, so the lower bound converges to the upper bound as $n\to\infty$, and thus we have that the limit is $\frac{1}{\pi}e^{-2x^2}$.
+$$\lim_{n\to\infty}\sqrt{n}\int_{x\sqrt{n}}^{x\sqrt{n}+1}\frac{1}{\sqrt{n\pi}}e^{-2t^2/n}=\frac{1}{\sqrt{\pi}}\lim_{n\to\infty}\int_{x\sqrt{n}}^{x\sqrt{n}+1}e^{-2t^2/n}$$
+The latter integral is bounded between $e^{-2x^2}$ and $e^{(-2(x\sqrt{n}+1)^2)/n}$ by evaluating at the lower and upper bounds and using the monotony of the integrand. Expanding the lower bound, we have $e^{-2x^2}e^{-4x/\sqrt{n}}e^{-2/n}$. As $n\to\infty$, the second two exponential terms approach $1$, so the lower bound converges to the upper bound as $n\to\infty$, and thus we have that the limit is $\frac{1}{\sqrt{\pi}}e^{-2x^2}$.
 \subsection*{6}
 Since $F$ is order-preserving, we have $F^{-1}(U)\leq y\longleftrightarrow U\leq F(y)$. Thus, $P(F^{-1}(U)\leq y)=P(U\leq F(y))$. Since $U$ is uniform, this probability is just $F(y)$.
 \subsection*{7}
