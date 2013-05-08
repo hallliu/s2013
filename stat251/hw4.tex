@@ -41,5 +41,14 @@ As $n\to\infty$, $X_n-n/2$ converges in distribution to a normal RV $N(0,n/4)$ b
 $$\lim_{n\to\infty}\sqrt{n}\int_{x\sqrt{n}}^{x\sqrt{n}+1}\frac{1}{\pi\sqrt{n}}e^{-2t^2/n}=\frac{1}{\pi}\lim_{n\to\infty}\int_{x\sqrt{n}}^{x\sqrt{n}+1}e^{-2t^2/n}$$
 The latter integral is bounded between $e^{-2x^2}$ and $e^{(-2(x\sqrt{n}+1)^2)/n}$ by evaluating at the lower and upper bounds and using the monotony of the integrand. Expanding the lower bound, we have $e^{-2x^2}e^{-4x/\sqrt{n}}e^{-2/n}$. As $n\to\infty$, the second two exponential terms approach $1$, so the lower bound converges to the upper bound as $n\to\infty$, and thus we have that the limit is $\frac{1}{\pi}e^{-2x^2}$.
 \subsection*{6}
+Since $F$ is order-preserving, we have $F^{-1}(U)\leq y\longleftrightarrow U\leq F(y)$. Thus, $P(F^{-1}(U)\leq y)=P(U\leq F(y))$. Since $U$ is uniform, this probability is just $F(y)$.
+\subsection*{7}
+Take the integral $\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty|x|e^{-x^2/2}$ as the expected value of $|X|$. We can split this integral into two parts, the positive and negative, so we get
+$$\frac{1}{\sqrt{2\pi}}\left(\int_0^\infty xe^{x^2/2}-\int_{-\infty}^0xe^{-x^2}{2}\right)=\frac{1}{\sqrt{2\pi}}\left(\int_{-\infty}^0e^u-\int_0^{-\infty}e^u\right)=\frac{2}{\sqrt{2\pi}}$$
+\subsection*{8}
+We have $P(U\leq x)=x$ for $x\in[0,1]$, so $P(1-U\leq 1-x)=x\implies P(1-U\geq y)=1-y\implies P(1-U\leq y)=y$, so $1-U$ is also uniform.
 
+$P(\max(U,1-U)\leq x)=0$ for $x\leq0.5$, so this is a distribution on $[0.5,1]$. If we want $\max(U,1-U)\leq x$, we need to have $U\leq x$ and $1-U\leq x\implies U\geq 1-x$. Thus, the probability is $x-(1-x)=2x-1$.
+\subsection*{9}
+Let $g_n(x)$ be the rational approximation function of order $n$. Then, $g_n(X)$ and $g_n(Y)$ are discrete random variables, with $P(g_n(X)=x)=\int_{k/n}^{(k+1)/n}f_X(x)$. The cdf of $g_n(X)$ converges to that of $X$ as $n\to\infty$. To see this, note that $P(g_n(X)\geq x)=\int_a^\infty f_X(x)$, where $|a-x|<\frac{1}{n}$ due to the fineness of the rational approximation. Thus, taking $n\to\infty$ brings this to $P(X\geq x)$. Now, since we know that expectations of discrete RVs are linear, we have $E(g_n(X)+g_n(Y))=E(g_n(X))+E(g_n(Y))$ for all $n$, so taking $n\to\infty$ here gives the linearity for continuous RVs as we wanted.
 \end{document}
