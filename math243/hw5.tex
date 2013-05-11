@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[cm]{fullpage}
+\newcommand{\nc}{\newcommand}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\nc{\cn}{\mathbb{C}}
+\nc{\rn}{\mathbb{R}}
+\nc{\qn}{\mathbb{Q}}
+\nc{\zn}{\mathbb{Z}}
+\nc{\aff}{\mathbb{A}}
+\nc{\proj}{\mathbb{P}}
+\nc{\pd}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\nc{\ep}{\epsilon}
+\nc{\topo}{\mathscr{T}}
+\nc{\basis}{\mathscr{B}}
+\nc{\nullset}{\varnothing}
+\nc{\openm}{\begin{pmatrix}}
+\nc{\closem}{\end{pmatrix}}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+\subsection*{5.1.1}
+Lines in $\proj^2$ are of the form $V(ax+by+cz)$. If $c\neq0$, we essentially have $z=ax+by$, so the image of this under the Veronese map $v_2$ consists of the points $[x^2:y^2:(ax+by)^2:xy:x(ax+by):y(ax+by)]$, where $x$ and $y$ are not both $0$. If $c=0$, then we can just take $a$ or $b$ nonzero and get essentially the same result, just with the coordinates shifted around. If we let $x^2=z_1,xy=z_2$, and $y^2=z^3$, we have that the image consists of points like $[z_1:z_2:az_1+2abz_3+bz_2:z_3:az_1+bz_3:az_2+bz_3]$. If we let the $i$th coordinate be $w_i$, then this satisfies the linear constraints $w_3-aw_1-2abw_4-bw_2,w_5-aw_1-bw_3$, and $w_6-aw_2-bw_4$.
+\subsection*{5.2.1}
+We want to show that if no four points are collinear, then the five hyperplanes $H_i$ are linearly independent. 
+\subsection*{5.2.2}
+By Thm from class, all cubics are equivalent to $\ep_1x^2+\ep_2y^2+\ep_3z^2$ after a linear change of coordinates. 
+\subsection*{5.3.2}
+Suppose $X\subset \proj^m$ is defined by $Z(f_1,\ldots,f_r)$ where $f_i\in k[x_0,\ldots,x_m]$ and $Y\subset \proj^n$ is defined by $Z(g_1,\ldots,g_s)$ where $g_i\in k[x_{m+1},\ldots,x_{m+n+1}]$. Then, looking at $f_i$ and $g_i$ as elements of $k[x_0,\ldots,x_{m+n+1}]$, all the points in $X\times Y\subset \proj^m\times\proj^n$ are defined by the $f_i$ and the $g_i$. Now, if we take the image of $X\times Y$ under the Segre embedding, the image will satisfy the transformed versions of the $f_i$ and $g_i$ under the Segre embedding as well as the equations defining the image of $\proj^m\times\proj^n$. Since the Segre embedding is an isomorphism onto the image, the variety defined by these equations is in fact the image of $X\times Y$.
+
+As for quasiprojective varieties, they are defined in $\proj^n,\proj^m$ by the intersection of a variety (e.g. $X,Y$) with the complement of another variety ($X',Y'$), so we can map these varieties in the same way as above.
+\end{document}
