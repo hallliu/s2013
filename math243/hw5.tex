@@ -46,6 +46,11 @@ Suppose $X\subset \proj^m$ is defined by $Z(f_1,\ldots,f_r)$ where $f_i\in k[x_0
 
 As for quasiprojective varieties, they are defined in $\proj^n,\proj^m$ by the intersection of a variety (e.g. $X,Y$) with the complement of another variety ($X',Y'$), so we can map these varieties in the same way as above.
 \subsection*{5.3.4}
+%The projections from the product topology to one of the component spaces are open maps. We want to show that there exists some set open in $X\times Y$ whose image under the projection is not open. To do this, we can show that there exists open sets which cover $\proj^n\times\proj^m$ except for a finite number of points and whose images are not open, since then we can just intersect the open set with the variety and get an open set whose image isn't open. First, as an example, let's do it for $\proj^1\times\proj^1$. The Segre variety of this lies in $\proj^3$. Note that the varieties $V(x_1^2-x_2),V(x_1^2-x_3),V(x_2^2-x_4),V(x_3-x_4^2)$ only intersect at the point $[1:1:1:1]$, so their complements cover $\proj^3$ except for that point. 
+
+%The image of the Segre map in $\proj^3$ has the form $[su:sv:tu:tv]$, and this intersected with the complement of $V(x_i^2-x_j)$ (say $i=1,j=2$) will carry the condition that $s^2u^2\neq sv$. Projecting to $\proj^1$, we get $[su:sv]$ with this condition. However, this is the complement of $\{[x:x^2]:x\neq0\}$ in $\proj^1$, which is only the point $[1:0]$, which is not open. This works the same way for the other $i,j$ pairs. 
+
+%Moving into $\proj^n\times\proj^m$, we use the complements of the same varieties (which again only intersect at the point consisting of all $1$s). 
 \subsection*{5.4.1}
 Let the conic be $x^2+y^2-z^2$, since all the interesting irreducible conics are equivalent to this after a change of coordinates (nothing can meet the double line in two distinct points, so the set of lines would be the whole Grassmannian). Restricting this to a line $ax+by+cz$ (assuming $c\neq0$, which we can do because we can just swap coordinates around again), we have $x^2+y^2-(a^2x^2+abxy+b^2y^2)=(1-a^2)x^2-abxy+(1-b^2)y^2$. This has less than two solutions if the discriminant $a^2b^2-4(1-a^2)(1-b^2)=a^2b^2-4(1-a^2-b^2+a^2b^2)$ is nonpositive. 
 \subsection*{3}
