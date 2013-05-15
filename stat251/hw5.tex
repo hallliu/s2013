@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[cm]{fullpage}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\newcommand{\ep}{\epsilon}
+\newcommand{\openm}{\begin{pmatrix}}
+\newcommand{\closem}{\end{pmatrix}}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\var}{var}
+\newcommand{\nc}{\newcommand}
+\newcommand{\rn}{\mathbb{R}}
+\nc{\Pt}[1]{P(\text{#1})}
+\nc{\nn}{\mathbb{N}}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+
+\subsection*{1}
+The distribution of $X^2$ (resp. $Y^2$) is given by Example 7b in the book, which gives $f_{X^2}(t)=\frac{1}{\sqrt{2\pi t}}e^{\frac{-t}{2}}$. This is the density of the $\Gamma(1/2,1/2)$ distribution, so the sum of two of these gives the $\Gamma(1,1/2)$ distribution, which has density $\frac{1}{2\Gamma(1)}e^{-t/2}$.
+
+%The distribution of the sum is given by the convolution, or
+%$$f_{X^2+Y^2}(a)=\int_{-\infty}^\infty\frac{1}{2\pi\sqrt{t(a-t)}}e^{-a/2}dt=\frac{1}{2\pi}e^{-a/2}\int_0^\infty\frac{1}{\sqrt{t(a-t)}}$$
+%Substituting $t=a/2+t$ in the integral, we get 
+\subsection*{2}
+By defn of conditional probability, $P(X\geq t+s|X\geq t)=\frac{P(X\geq t+s)}{P(X\geq t)}=\frac{1-F_X(t+s)}{1-F_X(t)}$, which is in turn equal to $P(X\geq s)=1-F_X(s)$ by assumption. Let $G=1-F$, so we have the identity $G(t+s)=G(t)G(s)$. This gives that 
+$$\frac{G(t+s)-G(t)}{s}=\frac{G(t)G(s)-G(t)}{s}=G(t)\frac{G(s)-1}{s}$$
+Taking $s\to0$, we have $G'(t)=G(t)G'(0)$. Solving this differential equation gives that $G(t)=e^{-\lambda t}$ where $\lambda>0$ (since $G$ reaches its maximum value at $0$, $G'(0)$ must be negative). This implies $F_X(t)=1-e^{-\lambda t}\implies f_X(t)=\lambda e^{-\lambda t}$, which is the exponential density.
+\subsection*{3}
+(1): The $T_k$ are essentially the number of trials between the $Y_{k-1}$th and $Y_{k}$th multiplied by $\delta$. This is equivalent to the spacing between the successes, multiplied by $\delta$. Since the trials are independent, the $T_i$ are also independent (and identically distributed), so $P(T_1\geq t_1,\ldots,T_k\geq t_k)$ is the product $\prod P(T_i\geq t_i)=\prod P(G_i\geq t_i/\delta)$, where the $G_i$ follow a geometric distribution with parameter $\delta$. Then, 
+$$P(G_i\geq t_i/\delta)=\sum_{k=t_i/\delta+1}^\infty \delta(1-\delta)^{k-1}=\delta(1-\delta)^{t_i/\delta}\sum_{k=0}^\infty(1-\delta)^k=(1-\delta)^{t_i/\delta}$$
+Taking $\delta\to0$, we get $e^{-t_i}$, so the product of all these is $e^{\sum t_i}$.
+
+(2): Let $D=1/\delta$. Then $N_{s,t}=\sum_{Ds<i\leq Dt}X_i$, which is the sum of $D(t-s)$ independent Bernoulli RVs (if we're worried about fractional values, let $D$ take only integral values). Then, $N_{s,t}$ is a binomial distribution with parameters $D(t-s)$ and $\delta$, so $P(N_{s,t}=k)=\binom{D(t-s)}{k}(1/D)^{k}(1-(1/D))^{D(t-s)-k}$. If we take $D\to\infty$ here, we can use the Poisson approximation, since $D(t-s)\delta=(t-s)$ is fixed. Thus, $\lim\limits_{D\to\infty}P(N_{s,t}=k)=e^{-(t-s)}\frac{(t-s)^k}{k!}$.
+\subsection*{4}
+Consider the process of students coming in for homework. This satisfies the first three conditions of a Poisson process by virtue of its role as a subprocess of a Poisson process (i.e. homework students arriving in a span of time are a subset of all students coming in that span of time, and the way in which the subset is determined is random and is stationary with time). Denote the number of homework students by $N_h(t)$, midterm by $N_m$, and total by $N$. Then, we have $P(N_h(t)=1)=\sum_{k=0}^\infty P(N_h(t)=1|P(N(t)=k))P(N(t)=k)$. For $k=0$, the summand is zero since we can't have $P(N_h(t)=1)$ if $k=0$. For $k=1$, $P(N_h(t)=1|P(N(t)=1))=1/2$ and $P(N(t)=1)=t+o(t)$, and for $k\geq 2$, the whole sum can be shown to be $o(t)$ by bounding $P(N_h(t)=1|P(N(t)=k))$ above by $1$ and noting that $\sum_{k=2}^\infty P(N(t)=k)=P(N(t)\geq2)=o(t)$. Thus, $P(N_h(t)=1)=t/2+o(h)$ and $P(N_h(t)\geq 2)$ can be shown to be $o(t)$ by a similar argument (first two summands are now zero).
+
+Thus, having satisfied the five conditions, the process of students coming in for homework is a Poisson process with rate $1/2$, and by symmetry, so is the process of students coming in for their midterms. 
+
+As for the joint distribution of these processes, we have the identity $N_h(t)+N_m(t)=N(t)$ for all $t$. In addition, if we keep $N(t)$ fixed, the distribution of $N_h(t)$ is binomial with probability $1/2$. Thus, we have that 
+$$P(N_h(t)=a,N_m(t)=b)=P(N(t)=a+b)P(N_h(t)=a|N(t)=a+b)=\frac{1}{(a+b)!}e^{-1}\binom{a+b}{b}(1/2)^{a+b}=\frac{1}{ea!b!2^{a+b}}$$.
+\subsection*{5}
+Since the $X_i$ are continuous, we can assume that $P(X_i=X_j)=0$ when $i\neq j$, so there's almost always a unique way to order them. Consider $P(X_1<X_2<\cdots<X_j<\cdots<X_i<X_{j+1}<\cdots<X_n)$, where two variables have been swapped in the ordering. This is equal to the original probability. If we record the values of all the $X_k$ before $X_i$ and $X_j$ (we can do this because of independence), then the original ordering is satisfied if $X_i\in[X_{i-1},X_{i+1}]$ and $X_j\in[X_{j-1},X_{j+1}]$, and the new ordering is satisfied if their positions are reversed. However, reversing their positions does nothing to the probability that this happens, since $X_i$ and $X_j$ are identically distributed. Thus, since any swap does not affect the probabilty and any permutation can be expressed as a composition of swaps, all $n!$ permutations of the ordering of the $X_i$ are equally likely, so we have that the probability of any particular ordering is $\frac{1}{n!}$.
+\subsection*{6}
+Define $Z_1,Z_2,Z_3$ to be iid Poisson RVs with mean $1/2$. Let $X=Z_1+Z_2$ and $Y=Z_2+Z_3$. Then $X$ and $Y$ are Poisson with mean $1$. We have $E(X)E(Y)=1$ and $E(XY)=E(Z_1Z_2)+E(Z_1Z_3)+E(Z_2^2)+E(Z_2Z_3)$. All these terms besides the $E(Z_2^2)$ term are expectations of independent RVs, so those three terms are each $1/4$. For the remaining one, we have $\var(Z_2)=E(Z_2^2)-E(Z_2)^2=1/2$, so $E(Z_2^2)=3/4$, so we get a total of $3/2$ for $E(XY)$. Subtracting off $E(X)E(Y)$ gives a covariance of $1/2$.
+\subsection*{7}
+The $b_i$ are not well-defined in this problem. Binary expansions of real numbers are not unique, but I think that's okay here because the non-uniqueness can occur only at rational numbers, which are countable so they don't matter.
+
+Now, if we fix $n$, the set of real numbers with the first binary digits $b_1b_2\ldots b_n$ is the interval $[0.b_1b_2\ldots b_n00\ldots,0.b_1b_2\ldots b_n00\ldots+2^{-n})$, since adding anything less than $2^{-n}$ to $0.b_1b_2\ldots b_n00\ldots$ will not change $b_n$. This set has measure $2^{-n}$ regardless of the actual values of the $b_i$, so the joint pmf of the $b_i$ has value $2^{-n}$ regardless of the values of the $b_i$.
+
+\end{document}
