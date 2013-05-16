@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[cm]{fullpage}
+\newcommand{\nc}{\newcommand}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\nc{\cn}{\mathbb{C}}
+\nc{\rn}{\mathbb{R}}
+\nc{\qn}{\mathbb{Q}}
+\nc{\zn}{\mathbb{Z}}
+\nc{\aff}{\mathbb{A}}
+\nc{\proj}{\mathbb{P}}
+\nc{\pd}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\nc{\ep}{\epsilon}
+\nc{\topo}{\mathscr{T}}
+\nc{\basis}{\mathscr{B}}
+\nc{\nullset}{\varnothing}
+\nc{\openm}{\begin{pmatrix}}
+\nc{\closem}{\end{pmatrix}}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+\subsection*{5.5.1}
+If $V$ is a linear subvariety, then it is defined by $V(\sum a_ix_i)$ for $0\leq i\leq n$, which has degree $1$ since it is a hypersurface of a degree $1$ polynomial.
+
+Conversely, suppose $V$ has degree $1$. Further, suppose $V$ has dimension $d$. Then all linear subvarieties of dimension $n-d$ intersect $V$ at at most one point if it is not a component of $V$. 
+\subsection*{5.5.3}
+Consider the conics $V(x^2+y^2-z^2)$ and $V(xy)$. Since these are both hypersurfaces formed from degree $2$ polynomials, they both have degree $2$. The example on page 94 shows that $V(x^2+y^2-z^2)$ is smooth, but if we examine the Jacobian of $xy$ at $[0:0:1]$, it's zero, so it has rank zero, which means that the dimension of the tangent space there is $2$, which disagrees with the dimension of the variety. Therefore they're not isomorphic.
+\subsection*{5.6.1}
+Let $W=v_d(V)$. Consider some $g\in k[V]$ of degree $n$. The inverse of the Veronese map induces a homomorphism from $k[V]$ to $k[W]$, so the image of $g$ is $g\circ F$, where $F$ is the inverse of the Veronese map. This is an element of $k[W]_n$, since $F$ is a projection. However, we can also view $g\circ F$ as an element of $k[V]_{nd}$ by ``loading in'' the degree $d$ monomials (in the coordinates of $V$) that are the coordinates of $W$. 
+\end{document}
