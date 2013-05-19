@@ -28,10 +28,10 @@ Name: Hall Liu
 
 Date: \today 
 \vspace{1.5cm}
-I'll probably by referencing Algebraic Geometry -- a First Course (Harris) a lot in this pset -- it's a lot more helpful than our textbook.
+
+I'll probably be referencing Algebraic Geometry -- a First Course (Harris) a lot in this pset -- it's a lot more helpful than our textbook.
 \subsection*{5.5.1}
-%Problematic -- ask ramsey tomorrow
-%If $V$ is a linear subvariety, then it is defined by $\bigcap V(\sum a_ix_i)$ for $0\leq i\leq n$, which has degree $1$ since it is the intersection of hypersurfaces of degree $1$ polynomials.
+If $V$ is a linear subvariety, then it is defined by $x_i=0$ for some set of $i$s after a linear change of variables. This is the intersection of a bunch of hypersurfaces defined by degree $1$ polynomials, so it has degree $1$.
 
 Conversely, suppose $V$ has degree $1$ and dimension $d>0$. Further, suppose that $V$ is not a linear variety. Then, for some point $p\in V$, $V$ and $T_pV$ intersect with $\dim(V\cap T_pV)\leq 2d-n$ (I don't know how to formally prove this, but it seems to be true intuitively in low dimensions). Choose some subspace or superspace $W$ containing $p$ of $T_pV$ of dimension $n-d$ such that $W$ intersects $V$ at a finite number of points (again, no formal proof, but it seems right). Due to the definition of degree, $W\cap V$ consists of only the point $p$. However, $W$ and $V$ do not intersect transversely, since the dimension of the span of the tangent spaces of $W$ and $V$ is $\max(\dim T_pV, \dim W)$ since we have $T_pW=W$ and either $T_pV\subset W$ or $W\subset T_pV$. Thus, the intersection multiplicity at $p$ must be greater than $1$. However, by Thm 18.4 from Harris, $\deg W\cdot\deg V=1$ is the sum of the intersection multiplicities at all the subvarieties on which they intersect, but we showed that this must be greater than $1$. Thus, $V$ being nonlinear is a contradiction.
 \subsection*{5.5.3}
