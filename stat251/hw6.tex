@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[cm]{fullpage}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\newcommand{\ep}{\epsilon}
+\newcommand{\openm}{\begin{pmatrix}}
+\newcommand{\closem}{\end{pmatrix}}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\var}{var}
+\newcommand{\nc}{\newcommand}
+\newcommand{\rn}{\mathbb{R}}
+\nc{\Pt}[1]{P(\text{#1})}
+\nc{\nn}{\mathbb{N}}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+
+\subsection*{1}
+Starting at any time, the probability that the frog jumps left next is the probability that Process I occurs next before Process II. Since the next event that triggers is from Process I with probability $1/2$ (by symmetry of the processes -- relabeling I as II leaves the problem the same), the frog will jump left or right with equal probability. Denote the probability that the frog reaches $0$ from $k$ as $p_k$. Then, we have $p_k=\frac{1}{2}(p_{k-1}+p_{k+1})$ with $p_0=1$ and $p_n=0$. Since $p_k$ is the average of $p_{k-1}$ and $p_{k+1}$, we must have $p_{k+1}-p_k=p_k-p_{k-1}$ for all $k$, which means that the $p_k$ are given by $ak+b$ for some real $a,b$. Plugging in the endpoint values, we get $p_k=\frac{n-k}{k}$.
+\subsection*{2}
+Last week's hw showed that any ordering of a sequence of iid random variables is equally likely. We will use this result.
+
+a. If $X_6>X_1$, that implies that $X_6>X_i$ for each $i<6$. Then, the probability of this is the number of configurations in which $X_6>X_1>X_i$ for $i=2,3,4,5$ divided by the number of configurations in which $X_5>X_i$ for $i=2,3,4,5$. The first is $4!$ by permuting the first $4$ elements in the ordering, and the second is $6\times4!=144$ by considering the $6$ possible positions of $X_6$ in the ordering, so the probability is $1/6$.
+
+b. We want to count the number of configurations where $X_6>X_2$ and $X_1>X_i$ for $i=2,3,4,5$. If $X_6$ is the largest, there are $4!$ cases where this can be true. If $X_6$ is second-largest, there are still $4!$ cases where this can be true; if $X_6$ is third-largest, there are $3\cdots3!$ ways this can be true; fourth-largest is $2\times3!$; fifth-largest is $3!$, and smallest is $0$, for a total of $4!+4!+6\cdot3!=84$ ways, so the probability is $84/144=7/12$.
+\subsection*{3}
+Let $X=\mu+\sigma Z$, where $Z\sim N(0,1)$. Then, $E(e^{tX})=E(e^{t\mu+t\sigma Z})=E(e^{t\mu}e^{t\sigma Z})=e^{t\mu}E(e^{t\sigma Z})$. Integrate to find $E(e^{t\sigma Z})$.
+\begin{align*}
+    \int_{-\infty}^\infty e^{t\sigma z}\frac{1}{\sqrt{2\pi}}e^{\frac{-z^2}{2}}dz&=\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}e^{\frac{-z^2+2t\sigma z}{2}}dx\\
+                                                                               &=\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}e^{-\frac{z^2-2t\sigma z+t^2\sigma^2}{2}+\frac{t^2\sigma^2}{2}}dx\\
+                                                                               &=e^{\frac{t^2\sigma^2}{2}}\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}e^{\frac{-(z+t\sigma)^2}{2}}dx\\
+                                                                               &=e^{\frac{t^2\sigma^2}{2}}
+\end{align*}
+Then, we have $E(e^{tX})=e^{t\mu+\frac{t^2\sigma^2}{2}}$.
+\subsection*{4}
+Follow the hint. We have $\sum Y_i\geq1\iff$ any of the $X_i$ are greater than $\sqrt{2\log n}+1$, which is equivalent to $M_n>\sqrt{2\log n}+1$. Also, $\sum Z_i=0\iff$ all $X_i$ are below $\sqrt{2\log n}-1$, which is equivalent to $M_n<\sqrt{2\log n}-1$ If we show that the probability that both these happen go to $0$, then we show that the probability that $M_n$ lies outside the range $(\sqrt{2\log n}-1,\sqrt{2\log n}+1)$ goes to $0$.
+
+Using the Chernoff bounds from Section 8.5 (which don't depend on anything we haven't done yet, since we just derived the mgf for $N(0,1)$ above), we have:
+$$P(X_i>\sqrt{2\log n}+1)\leq\exp(-t\sqrt{\log(n^2)}-t)e^{t^2/2}=\exp\left((t/\sqrt{2})^2-t(\sqrt{\log(n^2)}+1)+\left(\frac{\sqrt{\log(n^2)}+1}{\sqrt{2}}\right)^2-\left(\frac{\sqrt{\log(n^2)}+1}{\sqrt{2}}\right)^2\right)$$
+Collecting the square term, we have $\exp((t/\sqrt{2}-(\sqrt{\log n}+1/\sqrt{2}))^2)$ multiplied by the leftover. Since the Chernoff bound holds for all $t>0$, we pick $t>0$ such that the difference in there is $0$, which means we can drop this term. Then, our upper bound on $P(X_i>\sqrt{2\log n}+1)$ becomes 
+$$\exp(-\log n-\sqrt{\log(n^2)}-1/2)=\frac{e^{-\sqrt{\log(n^2)}}e^{-\frac{1}{2}}}{n}$$
+Thus we have that
+$$P(X_i<\sqrt{\log(n^2)}+1)\geq 1-\frac{e^{-\sqrt{\log(n^2)}}e^{-\frac{1}{2}}}{n}\implies P(\sum Y_i=0)\geq\left(1-\frac{e^{-\sqrt{\log(n^2)}}e^{-\frac{1}{2}}}{n}\right)^n$$
+Since we have the numerator in the above expression going to $0$ and $\lim\limits_{x\to\infty}(1-a/x)^x=e^{-a}$, we have that this goes to $1$ as $n\to\infty$, which implies that $P(\sum Y_i\geq1)\to0$ as $n\to\infty$.
+
+For the $Z$ case, I'll be referencing the upper bound on $Q(x)$ from \url{<http://en.wikipedia.org/wiki/Q-function#Bounds>}. We have $P(\sum Z_i=0)=(\Phi(\sqrt{\log n^2}-1)^n$ goes to $0$ as $n\to\infty$. Using the $Q$-bound, we have 
+$$\Phi(\sqrt{\log n^2}-1)=1-Q(\sqrt{\log n^2}-1)\leq1-\frac{1}{\sqrt{2\pi}}\frac{\sqrt{\log n^2}-1}{\log n^2-2\sqrt{\log n^2}+2}\exp\left(-\frac{(\sqrt{\log n^2}-1)^2}{2}\right)$$
+Expanding out the exponential term, we get $\frac{\exp(\sqrt{\log n^2}-1/2)}{n}$. Taking this whole thing to the $n$th power, we can put it in the form $\left(1-\frac{a}{n}\right)^n$ where 
+$$a=\frac{1}{\sqrt{2\pi}}\frac{\sqrt{\log n^2}-1}{\log n^2-2\sqrt{\log n^2}+2}\exp(\sqrt{\log n^2}-1/2)$$
+Note that $\exp(\sqrt{\log n^2})$ grows far faster than any other term in $a$ and therefore dominates. Since $a$ grows rapidly, we have that the overall expression goes to $0$ as $n\to\infty$, which is what we wanted in the first place.
+
+\end{document}
