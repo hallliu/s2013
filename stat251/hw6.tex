@@ -52,10 +52,22 @@ Thus we have that
 $$P(X_i<\sqrt{\log(n^2)}+1)\geq 1-\frac{e^{-\sqrt{\log(n^2)}}e^{-\frac{1}{2}}}{n}\implies P(\sum Y_i=0)\geq\left(1-\frac{e^{-\sqrt{\log(n^2)}}e^{-\frac{1}{2}}}{n}\right)^n$$
 Since we have the numerator in the above expression going to $0$ and $\lim\limits_{x\to\infty}(1-a/x)^x=e^{-a}$, we have that this goes to $1$ as $n\to\infty$, which implies that $P(\sum Y_i\geq1)\to0$ as $n\to\infty$.
 
-For the $Z$ case, I'll be referencing the upper bound on $Q(x)$ from \url{<http://en.wikipedia.org/wiki/Q-function#Bounds>}. We have $P(\sum Z_i=0)=(\Phi(\sqrt{\log n^2}-1)^n$ goes to $0$ as $n\to\infty$. Using the $Q$-bound, we have 
+For the $Z$ case, I'll be referencing the upper bound on $Q(x)=1-\Phi(x)$ from \url{<http://en.wikipedia.org/wiki/Q-function#Bounds>}. We have $P(\sum Z_i=0)=(\Phi(\sqrt{\log n^2}-1)^n$ goes to $0$ as $n\to\infty$. Using the $Q$-bound, we have 
 $$\Phi(\sqrt{\log n^2}-1)=1-Q(\sqrt{\log n^2}-1)\leq1-\frac{1}{\sqrt{2\pi}}\frac{\sqrt{\log n^2}-1}{\log n^2-2\sqrt{\log n^2}+2}\exp\left(-\frac{(\sqrt{\log n^2}-1)^2}{2}\right)$$
 Expanding out the exponential term, we get $\frac{\exp(\sqrt{\log n^2}-1/2)}{n}$. Taking this whole thing to the $n$th power, we can put it in the form $\left(1-\frac{a}{n}\right)^n$ where 
 $$a=\frac{1}{\sqrt{2\pi}}\frac{\sqrt{\log n^2}-1}{\log n^2-2\sqrt{\log n^2}+2}\exp(\sqrt{\log n^2}-1/2)$$
 Note that $\exp(\sqrt{\log n^2})$ grows far faster than any other term in $a$ and therefore dominates. Since $a$ grows rapidly, we have that the overall expression goes to $0$ as $n\to\infty$, which is what we wanted in the first place.
+\subsection*{5}
+Not necessarily. Let $c(x,y)=2-2x-2y+4xy$. If $X,Y$ are jointly distributed according to $c$ on the unit square, then the marginal density of $X$ is $\int\limits_0^12-2x-2y+4xy dy=1$ and the same for $Y$. Consider the joint cdf $C(\Phi(z_1),\Phi(z_2))$ where $Z_1$ and $Z_2$ are standard normal RVs and $C(x,y)$ is the joint cdf corresponding to $c$. The marginal cdfs can be found by evaluating at $z_1=\infty$ or $z_2=\infty$, so the marginal cdf of $z_1$ is $C(\Phi(z_1),1)=\Phi(z_1)$, since $C$ has uniform marginals. Thus, the distribution with density $c(\Phi(z_1),\Phi(z_1))\phi(z_1)\phi(z_2)$ has standard normal marginals, but it's clearly not bivariate normal because $\Phi$ cannot be expressed in terms of elementary functions.
+\subsection*{6}
+Since $X_1$ and $X_2$ are distinguishable only up to labeling, $P(X_1<X_2)$ is invariant under swapping the labels, so we must have $P(x_1<X_2)=1/2$.
+\subsection*{7}
+Note that $P(X>\lambda)=1-P(X_1,X_2<\lambda)$ and the same for $Y$, so we just need to show that $P(Y_1,Y_2<\lambda)\geq P(X_1,X_2<\lambda)$. For $X$, independence implies that $P(X_1,X_2<\lambda)=P(X_1<\lambda)P(X_2<\lambda)=\Phi(\lambda)^2$. For $Y$, we have $P(Y_1,Y_2<\lambda)=P(Y_1<\lambda|Y_2<\lambda)P(Y_2<\lambda)$. From Example 5c in Chapter 6, we have that the conditional distribution of $Y_1$ given $Y_2=y$ is normal with mean $y/2$ and variance $3/4$. 
 
+Now, we have $P(Y_1<\lambda|Y_2<\lambda)$ is the average value of $\Phi((\lambda-y)/\sqrt{3/4})$ over $Y_2<\lambda$. It's going to be greater than $\Phi((\lambda-0)/\sqrt{3/4})$ since averaging $Y_2$ over all of $\rn$ gives $0$, so we have that the conditional probability is greater than $\Phi(\lambda)=P(Y_1<\lambda)$, which means that $P(Y_1,Y_2<\lambda)>P(Y_1<\lambda)P(Y_2<\lambda)=P(X_1,X_2<\lambda)$.
+%We have $P(X>\lambda)=P(X_1>\lambda\text{ or }X_2>\lambda)=P(X_1>\lambda)+P(X_2>\lambda)-P(X_1>\lambda\text{ and }X_2>\lambda)$ by inclusion-exclusion, and the same for $Y$. Expressing this in terms of the $Q$-function (defined in 4 above), we have $P(X>\lambda)=2Q(\lambda)-Q(\lambda)^2$, since $X_1$ and $X_2$ are independent.
+
+%For $Y$, we can construct a bivariate joint density by using the covariance matrix $\Sigma=\openm1&1/2\\1/2&1\closem$ to get the density 
+%$$f_{Y_1,Y_2}(y_1,y_2)=\frac{1}{2\pi\sqrt{3/4}}\exp\left(-\frac{2}{3}(y_1^2+y_2^2-y_1y_2)\right)$$
+%so we have that $P(Y_1>\lambda\text{ and }Y_2>\lambda)=\int_\lambda^\infty\int_\lambda^\infty f_{Y_1,Y_2}(y_1,y_2)dy_1dy_2$
 \end{document}
