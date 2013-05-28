@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[cm]{fullpage}
+\newcommand{\nc}{\newcommand}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\nc{\cn}{\mathbb{C}}
+\nc{\rn}{\mathbb{R}}
+\nc{\qn}{\mathbb{Q}}
+\nc{\zn}{\mathbb{Z}}
+\nc{\aff}{\mathbb{A}}
+\nc{\proj}{\mathbb{P}}
+\nc{\pd}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\nc{\ep}{\epsilon}
+\nc{\topo}{\mathscr{T}}
+\nc{\basis}{\mathscr{B}}
+\nc{\nullset}{\varnothing}
+\nc{\openm}{\begin{pmatrix}}
+\nc{\closem}{\end{pmatrix}}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+\subsection*{6.1.1}
+a. $d(x^2-y)|_{(0,0)}=2\times0(x-0)+(-1)(y-0)=-y$, so the tangent space is $V(y)$.
+
+b. $d(y^2-x^2-x^3)|_{(0,0)}=(-2\times0-3\times0^2)(x-0)+(2\times0)(y-0)=0$, so the tangent space is $V(0)=\aff^2$.
+
+c. $d(y^2-x^3)|_{(0,0)}=(-3\times0^2)(x-0)+(2\times0)(y-0)=0$, so the tangent space is $V(0)=\aff^2$.
+\subsection*{6.1.2}
+Consider the affine cone of some projective variety $Z$, and fix some point $p\in Z$. Consider some affine chart that $p$ lies in. This chart $U$ manifests itself as a plane in $\aff^{n+1}$ intersecting with the cone of $Z$ once we choose some $p\in\aff^{n+1}$ that corresponds to $p\in Z$. Now, note that the tangent space of Cone($Z$) at $p$ intersected with the plane is the tangent space of the affine part of $Z$ at $p$ (looking at it as Cone$(Z)\cap U$). This is because any line which lies in $U$ which is tangent to $Z\cap U$ at $p$ is also tangent to $Z$ and therefore part of the tangent space of Cone$(Z)$, and any line tangent to Cone$(Z)$ in $U$ is also tangent to Cone$(Z)\cap U$. 
+
+Under the projective closure definition of tangent space, the tangent space is the projective closure of this intersection. Under the affine cone definition, the tangent space is the image of the tangent space to the cone under the projective equivalence relation. Now, we can see that these are the same space, since the intersection can be seen as the intersection of the image of the affine-cone-tangent-space under the equivalence relation with an open affine subset, thus making it an open and dense subset of the projective tangent space, which means that the closure is precisely the projective tangent space under the affine cone definition.
+%Consider some projective variety $Z$ and a point $p\in Z$. Let $Z=Z(F_1,\ldots,F_r)$ where $F_i$ are homogeneous. Using the affine chart definition of tangent space, let the chart be $x_i\neq0$ for some $i$ where the $i$th coordinate of $p$ is nonzero. Then, the restriction of $Z$ to this chart is defined by $V(f_1,\ldots,f_r)$ where $f_j=F_i|_{x_i=1}$. Taking the tangent space here, we get $V(df_1|_p(x-p),\ldots,df_r|_p(x-p))$ where the derivatives are taken wrt $n$ variables. 
+
+%With the affine cone definition, we have that the tangent space to $p$ on the cone is defined by $V(dF_1|_p(x-p),\ldots,dF_r|_p(x-p)$, where the derivatives are taken wrt $n+1$ variables. 
+\subsection*{6.1.3}
+Since $F_1,\ldots,F_m$ generate a radical ideal, we have that on the affine cone, the tangent space to $p$ on the cone is defined by $V(dF_1|_p(x-p),\ldots,dF_r|_p(x-p)$. If we want to claim that these define a projective variety which is the projective tangent space, we need to show that they're homogeneous linear polynomials, but this is given by the definition in terms of $F(x)=F(p)+L(\ldots)+G(\ldots)$. Since each of the $F_i$ are homogeneous and $L$ consists identically of its degree $1$ terms, $L$ must also be homogeneous, and thus the $L(x-p)=dF_i|_p(x-p)$ define the projective tangent space.
+\subsection*{6.1.4}
+Since $F$ is irreducible, it generates a prime ideal, which is radical, so we can use 6.1.3 to obtain that its tangent space is defined by the vanishing of $\sum\frac{\partial F}{\partial x_i}\Big|_p(x_i-p_i)$. Since we are guaranteed that the degree $0$ part of this vanishes, the tangent space is actually the hyperplane defined by $sum\frac{\partial F}{\partial x_i}\Big|_px_i$. This will always have dimension at least $n-1$, and will have dimension exactly $n-1$ if it is not the zero polynomial, or when all the partials of $F$ don't simultaneously vanish at $p$.
+\subsection*{6.2.1}
+
+    
+\end{document}
