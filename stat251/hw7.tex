@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[cm]{fullpage}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\newcommand{\ep}{\epsilon}
+\newcommand{\openm}{\begin{pmatrix}}
+\newcommand{\closem}{\end{pmatrix}}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\var}{var}
+\newcommand{\nc}{\newcommand}
+\newcommand{\rn}{\mathbb{R}}
+\nc{\Pt}[1]{P(\text{#1})}
+\nc{\nn}{\mathbb{N}}
+\nc{\bs}{\boldsymbol}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+
+\subsection*{1}
+a. Integrate over $[0,1]$: $1/C=\int_0^1x(1-x)dx=(x^2/2-x^3/3)\big|_0^1=1/6$, so $C=6$.
+
+\noindent b. We have $f_{Y|X=x}(y|x)=\frac{f_{x,y}(x,y)}{f_X(x)}$, so the joint density is $f_{Y|X=x}(y|x)\times f_X(x)$. We know $f_X(x)$ from above, and $f_{Y|X=x}(y|x)$ is $1/x$ on $[0,x]$ and $0$ on $[x,1]$, so we can express it as $1/x\times\bs{1}_{y\in[0,x]}$. Thus, we get that the joint density is $6(1-x)\bs{1}_{y\in[0,x]}$.
+
+\noindent c. Fix some $y$, and integrate over $x$ from $0$ to $1$. We might as well start the integral at $x=y$, since any $x$-value under that will just produce $0$. For $x\geq y$, the indicator just becomes a $1$, and we have $\int_y^16(1-x)dx=(6x-3x^2)\big|_y^1=3-6y+3y^2$.
+
+\noindent d. $E(x)=\int_0^16x^2(1-x)dx=(2x^3-3x^4/2)\big|_0^1=1/2$ and $E(y)=\int_0^13y-6y^2+3y^3=(3y^2/2-2y^3+3y^4/4)\big|_0^1=1/4$. Finally, we have 
+$$E(XY)=\int_0^1\int_0^16xy(1-x)\bs{1}_{y\in[0,x]}dxdy=\int_0^1\int_y^16xy(1-x)dxdy=\int_0^1(3x^2y-2x^3y)\big|_y^1=\int_0^12y^4-3y^3+ydy=3/20$$
+so $\cov(X,Y)=1/8-3/20=-1/40$.
+\subsection*{2}
+a. The density of $X+Y$ is the convolution $\int_{-\infty}^\infty f_X(t)f_Y(x-t)dt$. For the inside to be nonzero, we must have $t>0,t<1,x>t,$ and $t>x-2$. Within these constraints, the integrand is $1/2$. For $x\in[0,1]$, we are integrating over $[0,x]$, so the density is $x/2$ on $[0,1]$. For $x\in[1,2]$, we integrate over $[0,1]$, so the density there is $x/2$. For $x\in[2,3]$, we are integrating from $x-2$ to $1$, so the density is $(3-x)/2$ on $[2,3]$. The density is piecewise linear and symmetric about $3/2$.
+
+\noindent b. We have that the joint distribution of $X,Y$ is $1/2$ on the rectangle $[0,1]\times[0,2]$ and zero elsewhere, since they're independent. Apply the change of variables $U=X$ and $V=X+Y$ ($X\mapsto U$ and $Y\mapsto V-U$) with Jacobian $\openm1&0\\1&1\closem$ and determinant $1$. The joint density is therefore $1/2$ when $U\in[0,1]$ and $V\in[U,2+U]$ (a parallelogram). 
+
+Writing this out in flat-form, the joint distribution of $U$ and $V$ ($X$ and $X+Y$, resp.) is $(1/2)\bs{1}_{U\in[0,1]}\bs{1}_{V\in[U,2+U]}$. The conditional distribution of $U$ when $V=z$ is obtained by substituting in $z$ above and dividing by $f_V(z)$. For $z\in[0,1]$, the conditional density of $U$ is $1/z$ for $U\in[0,z]$. For $z\in[1,2]$, the conditional density of $U$ is uniform on $[0,1]$, and for $z\in[2,3]$, the conditional density of $U$ is $1/(3-z)$ on $[z-2,1]$.
+\subsection*{3}
+For any particular $n$, $S_n$ is normal with mean $0$ and variance $n$. Thus, if we have $S_m$ and $S_n$ with $m<n$, we can write it as $U=S_m$ and $V=S_m+S_{n-m}$, where $S_{n-m}$ is the sum of the std normal RVs $X_{m+1},\ldots,X_n$. Thus, we have $S_m$ and $S_{n-m}$ independent, and their joint density is $\frac{1}{2\pi\sqrt{m(n-m)}}\exp-\left(\frac{x^2}{2m}+\frac{y^2}{2(n-m)}\right)$. Doing the same change-of-variables as in (2) to $U$ and $V$, we have that the joint density of $U$ and $V$ is $\frac{1}{2\pi\sqrt{m(n-m)}}\exp-\left(\frac{u^2}{2m}+\frac{(u-v)^2}{2(n-m)}\right)$. 
+
+\noindent a. We know that the marginal density of $U$ is $\frac{1}{\sqrt{2\pi m}}e^{-u^2/2m}$, so dividing the joint by the marginal and letting $u=s$ gives the conditional density $\frac{1}{\sqrt{2\pi(n-m)}}e^{\frac{-(s-v)^2}{2(n-m)}}$. This is a $N(s,n-m)$ distribution.
+
+\noindent b. The marginal density of $V$ is $\frac{1}{\sqrt{2\pi n}}e^{-v^2/2n}$, so dividing the joint distribution by this and setting $v=t$ gives 
+$$\sqrt{\frac{n}{2\pi m(n-m)}}\exp\left(-\frac{u^2}{2m}-\frac{(t-u)^2}{2(n-m)}+\frac{t^2}{2n}\right)=\sqrt{\frac{n}{2\pi m(n-m)}}\exp\left(-\frac{u^2-2(m/n)ut+(m^2/n^2)t^2}{2(m(n-m))/n}\right)$$
+which we can recognize as the $N(tm/n,(nm-m^2)/n)$ distribution.
+\subsection*{4}
+We know that $X_1^2+X_2^2$ follows a $\chi^2$ distribution with $2$ degrees of freedom. Call this side $X$, and it has density $\frac{e^{-x/2}}{2}$. We can rewrite $(X_3+X_4)^2+(X_5+X_6)^2$ as $U^2+V^2$ where $U,V\sim N(0,2)$. Then, we have $\frac{1}{2}(U^2+V^2)\sim\chi^2_2$. Call this side $Y$, and it has density $\frac{e^{-y/4}}{4}$. Since the two sides are independent, their joint density is the product, or $\frac{\exp(-x/2-y/4)}{8}$. To find $P(X<Y)$, we need to integrate this joint distribution over $[0,\infty)$ in $y$ and on $[0,y]$ in $x$. Thus we have
+    $$\frac{1}{8}\int_0^\infty e^{-y/4}\int_0^ye^{-x/2}dxdy=\frac{1}{8}\int_0^\infty -2e^{-y/4-y/2}+2e^{-y/4}=2/3$$
+\subsection*{5}
+The joint density of $X,Y$ is $\frac{1}{2\pi\sqrt{1-\rho^2}}\exp\left(-\frac{1}{2(1-\rho^2)}(x^2+y^2-2\rho xy)\right)$.
+
+\noindent a. We have $V=v\iff X=v^{1/3}$, so we can just condition upon $X=v^{1/3}=x$ to get 
+$$\frac{1}{\sqrt{2\pi(1-\rho^2)}}\exp\left(-\frac{1}{2(1-\rho^2)}\left(v^{2/3}+y^2-2yv^{1/3}\rho\right)+x^2/2\right)$$
+
+\noindent b. Denote a small neighborhood about a point $x$ as $\ep(x)$. We have $P(Y\in\ep(y)|U\in\ep(u))=P(Y\in\ep(y)|X\in\ep(x)\text{ or }X\in\ep(-x))$ where $x=\sqrt{u}$. Expanding, we have 
+$$\frac{P(Y\in\ep(y),X\in\ep(x))}{P(X\in\ep(x))+P(X\in\ep(-x))}+\frac{P(Y\in\ep(y),X\in\ep(-x))}{P(X\in\ep(x))+P(X\in\ep(-x))}$$
+Moving into the definition with density by differentiating, we have $f_{Y|U}(y|u)=\frac{f_{X,Y}(x,y)+f_{X,Y}(-x,y)}{2f_X(x)}$. Substitute values into the joint density to get the result (which is long and probably not very illuminating, so I'll omit it).
+\subsection*{6}
+Write $\Sigma=AA^T$ where $A$ is the matrix used to get the random vector $\bs{X}$ from a vector $\bs{U}$ of iid standard normal RVs. Then, $\sum t_iX_i=\bs{t}\cdot\bs{X}=\bs{t}\cdot A\bs{U}=(A^T\bs{t})\cdot\bs{U}$. Now, we take the exponential and get $\exp((A^T\bs{t})\cdot\bs{U})$. Now, for any vector $\bs{v}$, we have $E(\exp(\bs{v}\cdot\bs{U}))=\prod_iE(\exp(v_iU_i))=\prod_i\exp(v_i^2/2)$, as we showed in the last homework. This can be re-written as $\exp(\bs{v}\cdot\bs{v}/2)$. Plugging in $A^T\bs{t}$ for $v$, we have $\exp(\bs{t}^TAA^T\bs{t}/2)=\exp(\bs{t}^T\Sigma\bs{t}/2)$.
+\subsection*{7}
+a. Consider $P((Y_1,Y_2)\in A)$ for some rectangle $A\subset\rn^2$. Partition $A$ into $A_1,A_2,A_3,A_4$ by intersecting with the first, second, third, and fourth quadrants, resp. Let $A_i^j$ denote the $j$th projection of $A_i$ and $-A_i^j$ denote the reflection of $A_i^j$ about zero. We have $P((Y_1,Y_2)\in A_1)=P(Y_1\in A_1^1)P(Y_2\in A_1^2)=P(S_1=1)(P(X_1\in A_1^1)+P(X_1\in -A_1^1))P(S_2=1)(P(X_2\in A_1^1)+P(X_2\in -A_1^1))=P((X_1,X_2)\in A_1)$, since $S_1$ and $S_2$ are independent. We have similar results for $A_2,A_3,$ and $A_4$, so $Y_1$ and $Y_2$ are bivariate normal with no correlation.
+
+b. Consider $P(Y_1<0,Y_2<0,Y_3<0)$. This is zero, since it requires $S_1,S_2,S_3$ to be $-1$ simultaneously, a situation for which no value of $U$ can cause. However, $P(Y_1>0,Y_2>0,Y_3>0)$ is non-zero because $U=1$ implies this. Since multivariable normal RVs are symmetric about $0$ by reflection, these three are not multivariate normal.
+\end{document}
