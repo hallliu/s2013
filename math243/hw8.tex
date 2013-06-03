@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[namelimits,sumlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[cm]{fullpage}
+\newcommand{\nc}{\newcommand}
+\newcommand{\tab}{\hspace*{5em}}
+\newcommand{\conj}{\overline}
+\newcommand{\dd}{\partial}
+\nc{\cn}{\mathbb{C}}
+\nc{\rn}{\mathbb{R}}
+\nc{\qn}{\mathbb{Q}}
+\nc{\zn}{\mathbb{Z}}
+\nc{\aff}{\mathbb{A}}
+\nc{\proj}{\mathbb{P}}
+\nc{\pd}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\nc{\ep}{\epsilon}
+\nc{\topo}{\mathscr{T}}
+\nc{\basis}{\mathscr{B}}
+\nc{\nullset}{\varnothing}
+\nc{\openm}{\begin{pmatrix}}
+\nc{\closem}{\end{pmatrix}}
+\begin{document}
+Name: Hall Liu
+
+Date: \today 
+\vspace{1.5cm}
+\subsection*{7.3.1}
+Let $\phi$ be the rational map in question. For each open/dense set $U\subset X$, define $F:U\mapsto \Gamma_\phi$ as $F(x)=(x,\phi(x))$. These maps on all open/dense subsets of $X$ form a rational map from $X$ to $\Gamma_\phi$, since $\phi$ is a rational map implies that the values of $\phi$ agree on intersections. The projection is already a morphism of varieties, so it's a birational map. Now, if we look at $\pi\circ F$ on $X$, we have that for any open $U\subset X$ and $x\in U$, $F(x)=(x,\phi(x))\implies \pi(F(x))=x$. Similarly, $F\circ \pi$ is the identity on $\Gamma$ because $\pi$ is an open map, and $F$ is well-defined on open sets in $X$.
+\subsection*{7.3.4}
+Look at $\proj^1\times\proj^1$ as a projective variety embedded in $\proj^3$ by the Segre embedding. It is then the variety $V$ defined by $xw-yz=0$ in $\proj^3$. Define a map $\pi$ from this variety (excluding $[1:0:0:0]$) to $\proj^2$ by projection in the last $3$ coordinates. Define a map $F$ from $\proj^2$ to this variety by taking $[x:y:z]\mapsto[yz:x^2:yx:zx]$. Note that $F$ is defined on the open set $\proj^2-V(x)$. For an open set $U$ in $V$ not containing $[1:0:0:0]$ or $V(x)$, $F(\pi(p))=F([x:y:z])=[yz:x^2:yx:xz]$ for $p\in V$. For $x\neq0$, this is the same point as $[yz/x:x:y:z]$, which is in turn equal to $[w:x:y:z]$ due to the definition of $V$. Conversely, for an open set $U'$ in $\proj^2$ not containing $V(x)$, we have $\pi(F(p))=\pi([yz:x^2:xy:xz])=[x^2:xy:xz]=[x:y:z]$ for $p\in U'$, thus showing that this pair of maps is a birational equivalence.
+
+To show that the two are not isomorphic, consider the two subvarieties of $V$ defined by $A=\Sigma([0:1]\times\proj^1)$ and $B=\Sigma([1:0]\times\proj^1)$. In coordinates of $\proj^3$, these are $[0:0:y:z]$ and $[w:x:0:0]$, resp. for $[w:x]$ and $[y:z]$ ranging over $\proj^1$. Let $f$ be an isomorphism to $\proj^2$. $f$ takes $A$ and $B$ to two hypersurfaces in $\proj^2$ (by counting dimension), which means that the intersection of their images must be nonempty. However, since $A$ and $B$ don't intersect, this contradicts $f$'s injectiveness.
+\subsection*{7.3.5}
+Consider the variety $V(zx-y)$ in $\aff^3$. This condition is equivalent to $z=y/x$ when $x\neq0$, so if we remove the line $x=0$ from $V(xz-y)$, we get the set $\{(x,y,y/x)|(x,y)\in\aff^2\}$. Since $V(xz-y)\cap V(x)^c$ is open and dense, we have that $V(xz-y)$ is the closure of $\{(x,y,y/x)|(x,y)\in\aff^2\}$, which means that it's the graph of the specified rational map.
+\end{document}
